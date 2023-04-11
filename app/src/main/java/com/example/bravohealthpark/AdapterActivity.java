@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.myapplication.R;
+
 import java.util.ArrayList;
 
 public class AdapterActivity extends BaseAdapter {
