@@ -12,22 +12,21 @@
         android:theme="@style/Theme.BravoHealthPark"
         tools:targetApi="31">
         <activity
-            android:name="com.example.bravohealthpark.MedRegistrationActivity"
+            android:name="com.example.bravohealthpark.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignupActivity"
+            android:name="com.example.bravohealthpark.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.bravohealthpark.MedRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name="com.example.bravohealthpark.SplashActivity"
             android:exported="false" />
     </application>
 </manifest>
