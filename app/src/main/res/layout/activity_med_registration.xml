@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MedRegistrationActivity">
+
+  <LinearLayout
+      android:id="@+id/ParentLayout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:text="어떤 약을 드시나요?"
+          android:textSize="44dp"
+          android:textColor="@color/black"
+          android:textStyle="bold" />
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="63dp"
+          android:layout_marginTop="4dp"
+          android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="24dp"
+            android:text="처방전에 있는 QR코드로도"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:text="약 등록이 가능해요"
+            android:textSize="18dp" />
+      </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:text="약품명"
+            android:textSize="18dp" />
+
+        <EditText
+            android:id="@+id/Med_Name"
+            android:layout_width="362dp"
+            android:layout_height="55dp"
+            android:singleLine="true"
+            android:privateImeOptions="defaultInputmode=korean"
+            android:backgroundTint="@color/black"/>
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:text="복용 시작일"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+          <EditText
+              android:id="@+id/StartDay"
+              android:layout_width="310dp"
+              android:layout_height="55dp"
+              android:enabled="false"
+              android:textColor="@color/black"
+              android:backgroundTint="@color/black"/>
+
+          <Button
+              android:id="@+id/OpenCal_Start"
+              android:layout_marginLeft="5dp"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:background="@drawable/calender"/>
+
+        </LinearLayout>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:text="복용 종료일"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+          <EditText
+              android:id="@+id/EndDay"
+              android:layout_width="310dp"
+              android:layout_height="55dp"
+              android:enabled="false"
+              android:textColor="@color/black"
+              android:backgroundTint="@color/black"/>
+
+          <Button
+              android:id="@+id/OpenCal_End"
+              android:layout_marginLeft="5dp"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:background="@drawable/calender"/>
+
+        </LinearLayout>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingLeft="4dp"
+              android:text="복용 요일"
+              android:textSize="18dp" />
+
+          <CheckBox
+              android:id="@+id/Check_Everyday"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="10dp"
+              android:text="매일" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+          <Button
+              android:id="@+id/Check_Mon"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:background="@drawable/shape_for_circle_button"
+              android:text="월" />
+
+          <Button
+              android:id="@+id/Check_Tue"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:layout_marginLeft="8dp"
+              android:background="@drawable/shape_for_circle_button"
+              android:text="화" />
+
+          <Button
+              android:id="@+id/Check_Wed"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:layout_marginLeft="8dp"
+              android:background="@drawable/shape_for_circle_button"
+              android:text="수" />
+
+          <Button
+              android:id="@+id/Check_Thu"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:layout_marginLeft="8dp"
+              android:background="@drawable/shape_for_circle_button"
+              android:text="목" />
+
+          <Button
+              android:id="@+id/Check_Fri"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:layout_marginLeft="8dp"
+              android:background="@drawable/shape_for_circle_button"
+              android:text="금" />
+
+          <Button
+              android:id="@+id/Check_Sat"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:layout_marginLeft="7dp"
+              android:background="@drawable/shape_for_circle_button"
+              android:text="토" />
+
+          <Button
+              android:id="@+id/Check_Sun"
+              android:layout_width="45dp"
+              android:layout_height="45dp"
+              android:layout_marginLeft="7dp"
+              android:background="@drawable/shape_for_circle_button"
+              android:text="일" />
+
+        </LinearLayout>
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="vertical"
+          android:layout_marginTop="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="4dp"
+            android:text="복용 시간"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp">
+
+          <Button
+              android:id="@+id/AddTime_Btn"
+              android:layout_width="360dp"
+              android:layout_height="wrap_content"
+              android:text="+"
+              android:textSize="25dp"
+              android:background="@drawable/shape_for_add_button"/>
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/Alarm_ListView"
+            android:layout_width="match_parent"
+            android:layout_height="94dp"
+            tools:listitem="@layout/round_theme">
+
+
+        </ListView>
+      </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+      <Button
+          android:id="@+id/MedicAdd_Btn"
+          android:layout_width="338dp"
+          android:layout_height="70dp"
+
+          android:text="등록"
+          android:textSize="22dp" />
+
+      <Button
+          android:id="@+id/GoQR_Btn"
+          android:layout_width="match_parent"
+          android:layout_height="70dp"
+          android:text="QR\n코드"/>
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
