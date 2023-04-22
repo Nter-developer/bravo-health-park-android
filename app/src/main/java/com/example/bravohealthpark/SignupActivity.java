@@ -8,22 +8,16 @@ import android.widget.Button;
 
 public class SignupActivity extends AppCompatActivity {
 
-
-    private Button mSignupButton;
-
+    private Button mSignupBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        mSignupBtn = (Button) findViewById(R.id.signup_button_2);
 
-        mSignupButton = (Button) findViewById(R.id.signup_button_2);
-
-
-
-
-        mSignupButton.setOnClickListener(new View.OnClickListener() {
+        mSignupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
@@ -31,5 +25,4 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
-
 }

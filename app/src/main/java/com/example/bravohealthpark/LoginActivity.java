@@ -8,21 +8,17 @@ import android.widget.Button;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private Button mLoginButton;
-    private Button mSingupButton_1;
-
+    private Button loginBtn, singUpBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mLoginButton = (Button) findViewById(R.id.login_button);
-        mSingupButton_1 = (Button) findViewById(R.id.signup_button_1);
+        loginBtn = (Button) findViewById(R.id.login_button);
+        singUpBtn = (Button) findViewById(R.id.signup_button_1);
 
-
-
-        mLoginButton.setOnClickListener(new View.OnClickListener() {
+        loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SplashActivity.class);
@@ -30,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        mSingupButton_1.setOnClickListener(new View.OnClickListener() {
+        singUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
