@@ -23,7 +23,7 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/now_sqlash_ver2" />
+                android:src="@drawable/logo_now_medicine" />
 
 
         </LinearLayout>
@@ -73,7 +73,7 @@
                     android:layout_gravity="right"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/grandparents"/>
+                    android:src="@drawable/icon_grandparents"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
@@ -126,7 +126,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/graph_icon"/>
+                    android:src="@drawable/icon_graph"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/pref_lay_1_2"
@@ -185,7 +185,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/sound_icon"/>
+                    android:src="@drawable/icon_sound"/>
             </LinearLayout>
             <LinearLayout
                 android:id="@+id/pref_lay_2_2"

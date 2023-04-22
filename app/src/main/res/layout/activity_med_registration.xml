@@ -107,7 +107,7 @@
               android:layout_marginLeft="5dp"
               android:layout_width="45dp"
               android:layout_height="45dp"
-              android:background="@drawable/calender"/>
+              android:background="@drawable/icon_calender"/>
 
         </LinearLayout>
       </LinearLayout>
@@ -141,7 +141,7 @@
               android:layout_marginLeft="5dp"
               android:layout_width="45dp"
               android:layout_height="45dp"
-              android:background="@drawable/calender"/>
+              android:background="@drawable/icon_calender"/>
 
         </LinearLayout>
       </LinearLayout>
