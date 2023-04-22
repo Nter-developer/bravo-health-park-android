@@ -3,15 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_login.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/drawable/button_background.xml" value="0.213" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/drawable/layout_bottom_line.xml" value="0.213" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/drawable/layout_corner.xml" value="0.1" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/drawable/layout_corner_white.xml" value="0.213" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/drawable/layout_topcorner_bottomline.xml" value="0.213" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/drawable/shape_for_add_button.xml" value="0.213" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/drawable/shape_for_circle_button.xml" value="0.197" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_login.xml" value="0.21694915254237288" />
         <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_med_registration.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_signup.xml" value="0.3619791666666667" />
-        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_splash.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_pref_sound.xml" value="0.22" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_preference.xml" value="0.21770833333333334" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_signup.xml" value="0.22" />
+        <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/activity_splash.xml" value="0.33" />
         <entry key="..\:/Users/Desktop/AndroidStudioProjects/bravo-HealthPark-FE/app/src/main/res/layout/round_theme.xml" value="0.3619791666666667" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

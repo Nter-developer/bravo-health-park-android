@@ -6,19 +6,19 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.BravoHealthPark"
         tools:targetApi="31">
         <activity
-            android:name="com.example.bravohealthpark.PrefSoundActivity"
+            android:name=".PrefSoundActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bravohealthpark.PreferenceActivity"
+            android:name=".PreferenceActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bravohealthpark.LoginActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,13 +27,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.bravohealthpark.SignupActivity"
+            android:name=".SignupActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bravohealthpark.MedRegistrationActivity"
+            android:name=".MedRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.bravohealthpark.SplashActivity"
+            android:name=".SplashActivity"
             android:exported="false" />
     </application>
 
