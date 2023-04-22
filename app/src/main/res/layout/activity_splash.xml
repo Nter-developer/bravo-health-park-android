@@ -23,6 +23,7 @@
 
         </LinearLayout>
         <LinearLayout
+
             android:id="@+id/linear_l_2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -32,7 +33,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/now_sqlash_ver2"
+                android:src="@drawable/logo_now_medicine"
                 android:layout_gravity="center"
                 android:contentDescription="@null"
                 />
@@ -42,17 +43,24 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
+            <ImageView
+                android:layout_marginLeft="40dp"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/textView_2"
-                android:text="(주)코이헬스"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                android:gravity="center|bottom"
-                />
+                android:id="@+id/imageView_logo_koi_healthcare"
+                android:src="@drawable/logo_koi_healthcare"
+                android:gravity="bottom" />
+            <ImageView
+                android:layout_marginRight="40dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/imageView_logo_kgu_cs"
+                android:src="@drawable/logo_kgu_cs"
+                android:gravity="bottom" />
         </LinearLayout>
 
     </LinearLayout>
