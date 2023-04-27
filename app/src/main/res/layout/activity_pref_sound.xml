@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,6 +13,7 @@
         android:layout_margin="10dp"
         android:padding="10dp"
         android:background="#F2F2F2">
+
         <LinearLayout
             android:id="@+id/soundpref_header"
             android:layout_width="match_parent"
@@ -21,33 +21,39 @@
             android:layout_weight="3"
             android:layout_margin="10dp"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <ImageView
                         android:id="@+id/soundpref_back"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:src="@drawable/icon_back"/>
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="horizontal"/>
                 </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -57,12 +63,14 @@
                     android:textStyle="bold"
                     android:gravity="center" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="horizontal"/>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/soundpref_lay_1"
             android:layout_width="match_parent"
@@ -71,6 +79,7 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/layout_corner_white"
             android:orientation="vertical">
+
             <LinearLayout
                 android:id="@+id/soundpref_lay_1_1"
                 android:layout_width="match_parent"
@@ -78,12 +87,14 @@
                 android:layout_weight="1"
                 android:background="@drawable/layout_topcorner_bottomline"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:id="@+id/soundpref_lay_1_1_1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -93,6 +104,7 @@
                         android:textSize="20dp"
                         android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/soundpref_lay_1_1_2"
                     android:layout_width="0dp"
@@ -109,18 +121,21 @@
                         android:switchMinWidth="55dp" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/soundpref_lay_1_2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:id="@+id/soundpref_lay_1_2_1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -130,12 +145,14 @@
                         android:textStyle="bold"
                         android:textSize="20dp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/soundpref_lay_1_2_2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:orientation="vertical">
+
                     <SeekBar
                         android:id="@+id/soundseekbar"
                         android:layout_width="match_parent"
@@ -144,6 +161,7 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/soundpref_lay_2"
             android:layout_width="match_parent"
@@ -152,6 +170,7 @@
             android:layout_marginBottom="15dp"
             android:background="@drawable/layout_corner_white"
             android:orientation="vertical">
+
             <LinearLayout
                 android:id="@+id/soundpref_lay_2_1"
                 android:layout_width="match_parent"
@@ -159,6 +178,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/layout_topcorner_bottomline"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:id="@+id/soundpref_lay_2_1_1"
                     android:layout_width="0dp"
@@ -175,12 +195,14 @@
                         android:textSize="20dp"
                         android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/soundpref_lay_2_1_2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:orientation="vertical">
+
                     <Switch
                         android:id="@+id/vibrateswitch"
                         android:layout_width="match_parent"
@@ -190,18 +212,21 @@
                         android:switchMinWidth="55dp" />
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/soundpref_lay_2_2"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:id="@+id/soundpref_lay_2_2_1"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -211,12 +236,14 @@
                         android:textStyle="bold"
                         android:textSize="20dp" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/soundpref_lay_2_2_2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
                     android:orientation="vertical">
+
                     <SeekBar
                         android:id="@+id/vibrateseekbar"
                         android:layout_width="match_parent"
@@ -225,6 +252,7 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/soundpref_lay_3"
             android:layout_width="match_parent"
@@ -233,12 +261,14 @@
             android:background="@drawable/layout_corner_white"
             android:layout_marginBottom="15dp"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:id="@+id/soundpref_lay_3_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -248,12 +278,14 @@
                     android:textStyle="bold"
                     android:textSize="20dp" />
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/soundpref_lay_3_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:orientation="vertical">
+
                 <Switch
                     android:id="@+id/ttsswitch"
                     android:layout_width="match_parent"
@@ -270,26 +302,29 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal">
+
             <LinearLayout
                 android:id="@+id/pref_nav_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/pref_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:text="홈"/>
-
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/preference_nav_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/pref_2"
                     android:layout_width="match_parent"
@@ -297,12 +332,14 @@
                     android:gravity="center"
                     android:text="복약알림"/>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/preference_nav_3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/pref_3"
                     android:layout_width="match_parent"
@@ -310,12 +347,14 @@
                     android:gravity="center"
                     android:text="QR코드"/>
             </LinearLayout>
+
             <LinearLayout
                 android:id="@+id/preference_nav_4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/pref_4"
                     android:layout_width="match_parent"
