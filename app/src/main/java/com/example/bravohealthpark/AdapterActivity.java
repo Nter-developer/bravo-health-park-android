@@ -8,8 +8,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class AdapterActivity extends BaseAdapter {
-    public ArrayList<Time> listviewitem = new ArrayList<Time>();
-    private ArrayList<Time> arrayList = listviewitem;   //백업 arrayList
+
+    public ArrayList<Time> listviewItem = new ArrayList<Time>();
+    private ArrayList<Time> arrayList = listviewItem;   //백업 arrayList
 
     @Override
     public int getCount() {
@@ -63,24 +64,24 @@ public class AdapterActivity extends BaseAdapter {
         time.setMinute(minute);
         time.setAm_pm(am_pm);
 
-        listviewitem.add(time);
+        listviewItem.add(time);
     }
     //List 삭제 method
     public void removeItem(int position) {
-        if(listviewitem.size() < 1) {
+        if(listviewItem.size() < 1) {
 
         }
         else {
-            listviewitem.remove(position);
+            listviewItem.remove(position);
         }
     }
 
     public void removeItem() {
-        if(listviewitem.size() < 1) {
+        if(listviewItem.size() < 1) {
 
         }
         else {
-            listviewitem.remove(listviewitem.size()-1);
+            listviewItem.remove(listviewItem.size()-1);
         }
     }
 

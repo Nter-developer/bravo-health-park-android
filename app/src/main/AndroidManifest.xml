@@ -15,7 +15,7 @@
             android:name=".PrefSoundActivity"
             android:exported="false" />
         <activity
-            android:name=".PreferenceActivity"
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignupActivity"
+            android:name=".SignUpActivity"
             android:exported="false" />
         <activity
             android:name=".MedRegistrationActivity"

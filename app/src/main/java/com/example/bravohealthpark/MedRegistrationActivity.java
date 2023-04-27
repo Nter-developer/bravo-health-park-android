@@ -25,29 +25,15 @@ import java.util.Date;
 
 public class MedRegistrationActivity extends AppCompatActivity {
 
-    private EditText Med_Name;
-
+    private EditText medName;
     private LinearLayout ParentLayout;
-
-    private EditText StartDay;
-    private EditText EndDay;
-    private Button OpenCal_Start;
-    private Button OpenCal_End;
-
-    private CheckBox Check_Everyday;
-    private Button Check_Mon;
-    private Button Check_Tue;
-    private Button Check_Wed;
-    private Button Check_Thu;
-    private Button Check_Fri;
-    private Button Check_Sat;
-    private Button Check_Sun;
-
-    private Button AddTime_Btn;
-    private ListView Alarm_ListView;
-
+    private EditText StartDay, EndDay;
+    private Button openCalStartBtn, openCalEndBtn;
+    private CheckBox everydayBtn;
+    private Button monBtn, tueBtn, wedBtn, thuBtn, friBtn, satBtn, sunBtn;
+    private Button addTimeBtn;
+    private ListView alarmListView;
     private AdapterActivity adapter;
-
 
     void hideKeyboard()
     {
@@ -60,40 +46,34 @@ public class MedRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_med_registration);
 
-        Med_Name = findViewById(R.id.Med_Name);
-
+        medName = findViewById(R.id.Med_Name);
         ParentLayout = findViewById(R.id.ParentLayout);
-
         StartDay = findViewById(R.id.StartDay);
         EndDay = findViewById(R.id.EndDay);
-        OpenCal_Start = findViewById(R.id.OpenCal_Start);
-        OpenCal_End = findViewById(R.id.OpenCal_End);
-
-        Check_Everyday = findViewById(R.id.Check_Everyday);
-        Check_Mon = findViewById(R.id.Check_Mon);
-        Check_Tue = findViewById(R.id.Check_Tue);
-        Check_Wed = findViewById(R.id.Check_Wed);
-        Check_Thu = findViewById(R.id.Check_Thu);
-        Check_Fri = findViewById(R.id.Check_Fri);
-        Check_Sat = findViewById(R.id.Check_Sat);
-        Check_Sun = findViewById(R.id.Check_Sun);
-
-        AddTime_Btn = findViewById(R.id.AddTime_Btn);
-        Alarm_ListView = findViewById(R.id.Alarm_ListView);
-
-
-        Alarm_ListView = (ListView) findViewById(R.id.Alarm_ListView);
+        openCalStartBtn = findViewById(R.id.OpenCal_Start);
+        openCalEndBtn = findViewById(R.id.OpenCal_End);
+        everydayBtn = findViewById(R.id.Check_Everyday);
+        monBtn = findViewById(R.id.Check_Mon);
+        tueBtn = findViewById(R.id.Check_Tue);
+        wedBtn = findViewById(R.id.Check_Wed);
+        thuBtn = findViewById(R.id.Check_Thu);
+        friBtn = findViewById(R.id.Check_Fri);
+        satBtn = findViewById(R.id.Check_Sat);
+        sunBtn = findViewById(R.id.Check_Sun);
+        addTimeBtn = findViewById(R.id.AddTime_Btn);
+        alarmListView = findViewById(R.id.Alarm_ListView);
+        alarmListView = (ListView) findViewById(R.id.Alarm_ListView);
         adapter = new AdapterActivity();
-        Alarm_ListView.setAdapter(adapter);
+        alarmListView.setAdapter(adapter);
 
-        Alarm_ListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        alarmListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
             }
         });
 
-        AddTime_Btn.setOnClickListener(new View.OnClickListener() {
+        addTimeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // 현재 시간 구하기
@@ -115,8 +95,6 @@ public class MedRegistrationActivity extends AppCompatActivity {
             }
         });
 
-
-
         ParentLayout.setOnTouchListener(new View.OnTouchListener()
         {
             @Override
@@ -131,12 +109,9 @@ public class MedRegistrationActivity extends AppCompatActivity {
         Date mReDate = new Date(mNow);
         SimpleDateFormat mFormat = new SimpleDateFormat("yyyy - MM - dd");
         String formatDate = mFormat.format(mReDate);
-
         StartDay.setText(formatDate);
         EndDay.setText(formatDate);
-
         Calendar cal= Calendar.getInstance();
-
         int sYear = cal.get(Calendar.YEAR);
         int sMonth = cal.get(Calendar.MONTH);
         int sDay = cal.get(Calendar.DAY_OF_MONTH);
@@ -161,162 +136,153 @@ public class MedRegistrationActivity extends AppCompatActivity {
             }
         }, sYear, sMonth, sDay);
 
-        OpenCal_Start.setOnClickListener(new View.OnClickListener() {
+        openCalStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (OpenCal_Start.isClickable()) {
+                if (openCalStartBtn.isClickable()) {
                     datePickerDialog_Start.show();
                 }
             }
         });
 
-        OpenCal_End.setOnClickListener(new View.OnClickListener() {
+        openCalEndBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (OpenCal_End.isClickable()) {
+                if (openCalEndBtn.isClickable()) {
                     datePickerDialog_End.show();
                 }
             }
         });
 
-
-
-        Check_Everyday.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        everydayBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    Check_Mon.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    Check_Tue.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    Check_Wed.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    Check_Thu.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    Check_Fri.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    Check_Sat.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    Check_Sun.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    monBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    tueBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    wedBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    thuBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    friBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    satBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    sunBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
                 }
                 else {
-                    Check_Mon.getBackground().clearColorFilter();
-                    Check_Tue.getBackground().clearColorFilter();
-                    Check_Wed.getBackground().clearColorFilter();
-                    Check_Thu.getBackground().clearColorFilter();
-                    Check_Fri.getBackground().clearColorFilter();
-                    Check_Sat.getBackground().clearColorFilter();
-                    Check_Sun.getBackground().clearColorFilter();
+                    monBtn.getBackground().clearColorFilter();
+                    tueBtn.getBackground().clearColorFilter();
+                    wedBtn.getBackground().clearColorFilter();
+                    thuBtn.getBackground().clearColorFilter();
+                    friBtn.getBackground().clearColorFilter();
+                    satBtn.getBackground().clearColorFilter();
+                    sunBtn.getBackground().clearColorFilter();
                 }
             }
         });
 
         final boolean[] isChecked = {false};
 
-        Check_Mon.setOnClickListener(new View.OnClickListener() {
+        monBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isChecked[0]){
-                    Check_Mon.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    monBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
                     isChecked[0] = true;
 
                 }
                 else{
-                    Check_Mon.getBackground().clearColorFilter();
+                    monBtn.getBackground().clearColorFilter();
                     isChecked[0] = false;
                 }
             }
         });
 
-        Check_Tue.setOnClickListener(new View.OnClickListener() {
+        tueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isChecked[0]){
-                    Check_Tue.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    tueBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
                     isChecked[0] = true;
 
                 }
                 else{
-                    Check_Tue.getBackground().clearColorFilter();
+                    tueBtn.getBackground().clearColorFilter();
                     isChecked[0] = false;
                 }
             }
         });
 
-        Check_Wed.setOnClickListener(new View.OnClickListener() {
+        wedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isChecked[0]){
-                    Check_Wed.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    wedBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
                     isChecked[0] = true;
 
                 }
                 else{
-                    Check_Wed.getBackground().clearColorFilter();
+                    wedBtn.getBackground().clearColorFilter();
                     isChecked[0] = false;
                 }
             }
         });
 
-        Check_Thu.setOnClickListener(new View.OnClickListener() {
+        thuBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isChecked[0]){
-                    Check_Thu.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    thuBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
                     isChecked[0] = true;
 
                 }
                 else{
-                    Check_Thu.getBackground().clearColorFilter();
+                    thuBtn.getBackground().clearColorFilter();
                     isChecked[0] = false;
                 }
             }
         });
 
-        Check_Fri.setOnClickListener(new View.OnClickListener() {
+        friBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isChecked[0]){
-                    Check_Fri.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    friBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
                     isChecked[0] = true;
 
                 }
                 else{
-                    Check_Fri.getBackground().clearColorFilter();
+                    friBtn.getBackground().clearColorFilter();
                     isChecked[0] = false;
                 }
             }
         });
 
-        Check_Sat.setOnClickListener(new View.OnClickListener() {
+        satBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isChecked[0]){
-                    Check_Sat.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    satBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
                     isChecked[0] = true;
 
                 }
                 else{
-                    Check_Sat.getBackground().clearColorFilter();
+                    satBtn.getBackground().clearColorFilter();
                     isChecked[0] = false;
                 }
             }
         });
 
-        Check_Sun.setOnClickListener(new View.OnClickListener() {
+        sunBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!isChecked[0]){
-                    Check_Sun.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
+                    sunBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
                     isChecked[0] = true;
 
                 }
                 else{
-                    Check_Sun.getBackground().clearColorFilter();
+                    sunBtn.getBackground().clearColorFilter();
                     isChecked[0] = false;
                 }
             }
         });
-
-
-
-
     }
-
-
-
 }

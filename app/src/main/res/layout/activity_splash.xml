@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
+
     <LinearLayout
         android:layout_margin="50dp"
         android:layout_width="match_parent"
@@ -14,30 +15,29 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
+
         <LinearLayout
             android:id="@+id/linear_l_1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="vertical" />
 
-        </LinearLayout>
         <LinearLayout
-
             android:id="@+id/linear_l_2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"
             android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/logo_now_medicine"
-                android:layout_gravity="center"
-                android:contentDescription="@null"
-                />
+                android:layout_gravity="center" />
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/linear_l_3"
             android:layout_width="match_parent"
@@ -53,6 +53,7 @@
                 android:id="@+id/imageView_logo_koi_healthcare"
                 android:src="@drawable/logo_koi_healthcare"
                 android:gravity="bottom" />
+
             <ImageView
                 android:layout_marginRight="40dp"
                 android:layout_weight="1"
@@ -62,6 +63,5 @@
                 android:src="@drawable/logo_kgu_cs"
                 android:gravity="bottom" />
         </LinearLayout>
-
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
