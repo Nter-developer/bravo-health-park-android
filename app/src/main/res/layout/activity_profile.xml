@@ -3,295 +3,188 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".PreferenceActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ProfileActivity">
 
-    <LinearLayout
-        android:id="@+id/pref_lay"
+    <ScrollView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@color/white">
-        <LinearLayout
-            android:id="@+id/pref_header"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_margin="10dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/logo_now_medicine" />
+        android:layout_height="wrap_content">
 
-
-        </LinearLayout>
-    <LinearLayout
-        android:id="@+id/pref_profile"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
         <LinearLayout
-            android:id="@+id/pref_profile_1"
+            android:background="@color/main_gray"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/pref_profile_1_1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:orientation="vertical">
+                android:background="@color/white"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:id="@+id/layout_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginHorizontal="80dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/icon_default_profile"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="프로필"
                     android:textColor="@color/black"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="프로필 편집"
-                    android:textColor="#B4D5D3"
-                    android:textSize="17sp"
+                    android:text="꽃보다청춘님"
+                    android:textSize="36sp"
                     android:textStyle="bold"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/pref_profile_1_2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_gravity="right"
+
+                <Button
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/icon_grandparents"/>
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="#00FFFFFF"
+                    android:text="개인정보 수정"
+                    android:textColor="@color/main_gray"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
             </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/pref_profile_2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/layout_bottom_line"
-            android:orientation="vertical">
-            <TextView
+
+            <LinearLayout
+                android:paddingHorizontal="20dp"
+                android:background="@color/white"
+                android:id="@+id/layout_app_info"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="팁과 사용설명서 (어떻게 사용하나요?)"
-                android:textSize="17sp"
-                android:gravity="center_vertical" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/pref_profile_3"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@drawable/layout_bottom_line"
-            android:orientation="vertical">
-            <TextView
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_marginVertical="20dp"
+                    android:textSize="24sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textAlignment="viewStart"
+                    android:text="앱 설정" />
+
+                <View
+                    android:background="@color/main_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <Button
+                    android:layout_marginVertical="20dp"
+                    android:textSize="24sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textAlignment="viewStart"
+                    android:text="앱 설정" />
+
+                <View
+                    android:background="@color/main_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <Button
+                    android:layout_marginVertical="20dp"
+                    android:textSize="24sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textAlignment="viewStart"
+                    android:text="앱 설정" />
+
+                <View
+                    android:background="@color/main_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <Button
+                    android:layout_marginVertical="20dp"
+                    android:textSize="24sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textAlignment="viewStart"
+                    android:text="앱 설정" />
+
+                <View
+                    android:background="@color/main_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:paddingHorizontal="20dp"
+                android:background="@color/white"
+                android:id="@+id/layout_setting"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="고객지원 (1:1 문의사항 / 고객센터)"
-                android:textSize="17sp"
-                android:gravity="center_vertical" />
-        </LinearLayout>
+                android:layout_height="wrap_content">
 
-    </LinearLayout>
-        <LinearLayout
-            android:id="@+id/pref_lay_1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:background="@drawable/layout_corner"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/pref_lay_1_1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/layout_corner"
-                android:orientation="vertical">
-                <ImageView
+                <Button
+                    android:layout_marginVertical="20dp"
+                    android:textSize="24sp"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/icon_graph"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/pref_lay_1_2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/pref_lay_1_2_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="복약 기록 조회"
-                        android:textStyle="bold"
-                        android:textSize="35dp"
-                        android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textAlignment="viewStart"
+                    android:text="앱 설정" />
 
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/pref_lay_1_2_2"
+                <View
+                    android:background="@color/main_gray"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="얼마나 잘 먹었는지 확인할 수 있어요!"
-                        android:textSize="13sp"
-                        android:gravity="center"/>
-                </LinearLayout>
+                    android:layout_height="1dp"/>
+
+                <Button
+                    android:layout_marginVertical="20dp"
+                    android:textSize="24sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textAlignment="viewStart"
+                    android:text="앱 설정" />
+
+                <View
+                    android:background="@color/main_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <Button
+                    android:layout_marginVertical="20dp"
+                    android:textSize="24sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textAlignment="viewStart"
+                    android:text="앱 설정" />
+
+                <View
+                    android:background="@color/main_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
+
+                <Button
+                    android:layout_marginVertical="20dp"
+                    android:textSize="24sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:textAlignment="viewStart"
+                    android:text="앱 설정" />
+
+                <View
+                    android:background="@color/main_gray"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"/>
             </LinearLayout>
         </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/pref_lay_2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:background="@drawable/layout_corner"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/pref_lay_2_1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:backgroundTint="@color/white"
-                android:background="@drawable/layout_corner"
-                android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/icon_sound"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/pref_lay_2_2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <LinearLayout
-                    android:id="@+id/pref_lay_2_2_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="소리 및 진동 조절"
-                        android:textStyle="bold"
-                        android:textSize="30sp"
-                        android:gravity="center"/>
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/pref_lay_2_2_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:text="사용 편의를 돕기 위한 음성서비스 제공"
-                        android:textSize="13sp"
-                        android:gravity="center"/>
-                </LinearLayout>
-            </LinearLayout>
-
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/pref_nav"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:id="@+id/pref_nav_1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/pref_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="홈"/>
-
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/preference_nav_2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/pref_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="복약알림"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/preference_nav_3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/pref_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="QR코드"/>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/preference_nav_4"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/pref_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="설정"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-
-
-
-
-
-
-    </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
