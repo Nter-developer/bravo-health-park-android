@@ -208,13 +208,11 @@
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/pref_nav"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal">
             <LinearLayout
-                android:id="@+id/pref_nav_1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -227,7 +225,6 @@
                     android:text="홈"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/preference_nav_2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -240,7 +237,6 @@
                     android:text="복약알림"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/preference_nav_3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -253,7 +249,6 @@
                     android:text="QR코드"/>
             </LinearLayout>
             <LinearLayout
-                android:id="@+id/preference_nav_4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
