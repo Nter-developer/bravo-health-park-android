@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="30dp"
-    tools:context=".SignUpActivity">
+    tools:context=".ProfEditActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         app:layout_constraintTop_toTopOf="parent"
@@ -60,12 +60,12 @@
             android:inputType="textNoSuggestions" />
 
         <Button
-            android:id="@+id/button_signup"
+            android:id="@+id/ProfEditEnd_Btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/shape_button_off"
-            android:text="회원가입"
+            android:text="수정완료"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
