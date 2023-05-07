@@ -7,21 +7,21 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+public class ProfEditActivity extends AppCompatActivity {
 
-public class ProfileActivity extends AppCompatActivity {
+    private Button profEditEnd_Btn;
 
-    private Button profEdit_Btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_prof_edit);
 
-        profEdit_Btn = (Button) findViewById(R.id.ProfEdit_Btn);
+        profEditEnd_Btn = (Button) findViewById(R.id.ProfEditEnd_Btn);
 
-        profEdit_Btn.setOnClickListener(new View.OnClickListener() {
+        profEditEnd_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfEditActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
             }
         });
