@@ -11,18 +11,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/imageView_icon_profile"
+        android:id="@+id/ImageView_Icon_Profile"
         android:layout_margin="30dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:src="@drawable/logo_now_medicine" />
 
     <LinearLayout
-        app:layout_constraintTop_toBottomOf="@+id/imageView_icon_profile"
+        app:layout_constraintTop_toBottomOf="@+id/ImageView_Icon_Profile"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/layout_sns_login"
-        android:id="@+id/email_login_form"
+        app:layout_constraintBottom_toTopOf="@+id/Layout_Sns_Login"
+        android:id="@+id/Login_Form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -31,7 +31,7 @@
         <EditText
             android:layout_marginTop="10dp"
             android:background="@drawable/shape_edittext"
-            android:id="@+id/login_name"
+            android:id="@+id/Login_Name"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="이름"
@@ -41,7 +41,7 @@
         <EditText
             android:layout_marginTop="10dp"
             android:background="@drawable/shape_edittext"
-            android:id="@+id/login_pnum"
+            android:id="@+id/Login_Pnum"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="전화번호"
@@ -49,7 +49,7 @@
             android:inputType="textNoSuggestions" />
 
         <Button
-            android:id="@+id/login_button"
+            android:id="@+id/Login_Btn"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="20dp"
@@ -61,7 +61,7 @@
 
         <Button
             android:background="#00FFFFFF"
-            android:id="@+id/signup_button_1"
+            android:id="@+id/Signup_Btn"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
@@ -75,10 +75,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/layout_sns_login"
+        android:id="@+id/Layout_Sns_Login"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical">
     </LinearLayout>

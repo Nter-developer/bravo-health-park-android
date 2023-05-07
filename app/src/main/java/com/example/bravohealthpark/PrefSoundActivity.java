@@ -6,8 +6,6 @@ import android.widget.ImageView;
 
 public class PrefSoundActivity extends AppCompatActivity {
 
-    private ImageView imageviewBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
