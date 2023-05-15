@@ -3,6 +3,7 @@ plugins {
 }
 
 android {
+    buildToolsVersion "33.0.1"
     namespace 'com.example.bravohealthpark'
     compileSdk 33
 
