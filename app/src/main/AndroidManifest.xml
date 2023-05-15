@@ -30,7 +30,11 @@
             </intent-filter>
         </activity>
         <activity
+
             android:name=".ProfEditActivity"
+
+            androidg:name="com.example.bravohealthpark.SignupActivity"
+
             android:exported="false" />
         <activity
             android:name=".MedRegistrationActivity"
