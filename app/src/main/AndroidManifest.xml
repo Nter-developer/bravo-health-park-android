@@ -12,6 +12,9 @@
         android:theme="@style/Theme.BravoHealthPark"
         tools:targetApi="31" >
         <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
@@ -30,9 +33,7 @@
             </intent-filter>
         </activity>
         <activity
-
             android:name=".ProfEditActivity"
-
             android:exported="false" />
         <activity
             android:name=".MedRegistrationActivity"
