@@ -28,10 +28,20 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case R.id.Home_Fragment:
                         getSupportFragmentManager().beginTransaction().replace(R.id.MainFrame,new HomeFragment()).commit();
-                        break;
+                        return true;
+                    case R.id.Setting_Fragment:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.MainFrame,new SettingFragment()).commit();
+                        return true;
                 }
                 return false;
             }
         });
+
+        if (getIntent().hasExtra("fragment")) {
+            String fragment = getIntent().getStringExtra("fragment");
+            if (fragment.equals("setting")) {
+                BottomNavigationView.setSelectedItemId(R.id.Setting_Fragment);
+            }
+        }
     }
 }

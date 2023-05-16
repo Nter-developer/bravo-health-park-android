@@ -21,8 +21,10 @@ public class ProfEditActivity extends AppCompatActivity {
         profEditEnd_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                Intent intent = new Intent(ProfEditActivity.this, MainActivity.class);
+                intent.putExtra("fragment", "setting");
                 startActivity(intent);
+                finish();
             }
         });
     }
