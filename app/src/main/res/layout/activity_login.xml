@@ -31,17 +31,17 @@
         <EditText
             android:layout_marginTop="10dp"
             android:background="@drawable/shape_edittext"
-            android:id="@+id/Login_Name"
+            android:id="@+id/edittext_login_id"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="이름"
+            android:hint="아이디"
             android:textSize="20sp"
             android:inputType="textNoSuggestions" />
 
         <EditText
             android:layout_marginTop="10dp"
             android:background="@drawable/shape_edittext"
-            android:id="@+id/Login_Pnum"
+            android:id="@+id/edittext_login_pnum"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:hint="전화번호"
