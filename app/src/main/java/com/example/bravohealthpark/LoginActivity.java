@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bravohealthpark.retrofit.LoginDto;
 import com.example.bravohealthpark.retrofit.LoginResponse;
 import com.example.bravohealthpark.retrofit.RetrofitClient;
+import com.example.bravohealthpark.retrofit.SharedPreferenceBase;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                SharedPreferenceBase.initialize(LoginActivity.this.getApplicationContext());
                 retrofitService = RetrofitClient.getApiService();
                 LoginDto loginDto = new LoginDto(loginId.getText().toString(), phoneNumber.getText().toString());
                 Call<LoginResponse> call = retrofitService.sendLoginRequest(loginDto);
