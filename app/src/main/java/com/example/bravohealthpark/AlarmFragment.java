@@ -36,11 +36,8 @@ public class AlarmFragment extends Fragment {
         btn_1 = v.findViewById(R.id.Alarm_List_Btn_1);
         btn_2 = v.findViewById(R.id.Alarm_List_Btn_2);
 
-        monthYearText = v.findViewById(R.id.MonthYearText);
-        recyclerView = v.findViewById(R.id.Date_RV);
-        WeeklyCalendarUtil.selectedDate = LocalDate.now();
 
-        setMonthView();
+
         GoCalendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,62 +109,7 @@ public class AlarmFragment extends Fragment {
         return v;
 
     }
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private String monthYearFromDate(LocalDate date){
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("YYYY-MM");
-        return date.format(formatter);
-    }
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private void setMonthView(){
-        //년월 텍스트뷰 셋팅
-        monthYearText.setText(monthYearFromDate(WeeklyCalendarUtil.selectedDate));
-        //해당 월 날짜 가져오기
-        ArrayList<LocalDate> dayList = daysInMonthArray(WeeklyCalendarUtil.selectedDate);
-        //어뎁터 데이터 적용
-        WeeklyCalendarAdapter adapter = new WeeklyCalendarAdapter(dayList);
-        //레이아웃 설정(열 7개)
-        RecyclerView.LayoutManager manager = new GridLayoutManager(getActivity(), 7);
-        //레이아웃 적용
-        recyclerView.setLayoutManager(manager);
-        //어뎁터 적용
-        recyclerView.setAdapter(adapter);
-    }
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    private ArrayList<LocalDate> daysInMonthArray(LocalDate date){
 
-        ArrayList<LocalDate> dayList = new ArrayList<>();
-        YearMonth yearMonth = YearMonth.from(date);
-        //해당 월 마지막 날짜 가져오기(예 28, 30, 31)
-        int lastDay = yearMonth.lengthOfMonth();
-        //해당 월의 첫 번째 날 가져오기(예 5월1일)
-        LocalDate firstDay = WeeklyCalendarUtil.selectedDate.withDayOfMonth(1);
-        //첫 번째 날 요일 가져오기(월:1 , 일:7)
-        int dayOfWeek = firstDay.getDayOfWeek().getValue();
-
-        //날짜 생성
-        for(int i = 1; i < 8; i++){
-
-            if( i <= dayOfWeek || i > lastDay + dayOfWeek){
-
-                dayList.add(null);
-            }else{
-
-                dayList.add(LocalDate.of(WeeklyCalendarUtil.selectedDate.getYear(), WeeklyCalendarUtil.selectedDate.getMonth(),
-                        i - dayOfWeek));
-            }
-        }
-        /*for(int i = 1; i < 42; i++){
-
-            if( i <= dayOfWeek || i > lastDay + dayOfWeek){
-
-                dayList.add(null);
-            }else{
-                dayList.add(LocalDate.of(SmallCalendarUtil.selectedDate.getYear(), SmallCalendarUtil.selectedDate.getMonth(),
-                        i - dayOfWeek));
-            }
-        }*/
-        return dayList;
-    }
 
 }
