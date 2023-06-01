@@ -52,69 +52,57 @@
             </LinearLayout>
 
             <LinearLayout
-                android:paddingHorizontal="20dp"
-                android:background="@color/white"
                 android:id="@+id/Layout_App_Info"
-                android:layout_marginTop="10dp"
-                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingHorizontal="20dp">
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/logo_now_medicine" />
 
                 <Button
-                    android:layout_marginVertical="20dp"
-                    android:textSize="24sp"
+                    android:id="@+id/GoSoundSetting_Btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
                     android:background="@color/transparent"
+                    android:text="음성 및 소리 설정"
                     android:textAlignment="viewStart"
-                    android:text="앱 설정" />
+                    android:textSize="24sp" />
 
                 <View
-                    android:background="@color/main_gray"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:layout_height="1dp"
+                    android:background="@color/main_gray" />
 
                 <Button
-                    android:layout_marginVertical="20dp"
-                    android:textSize="24sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
                     android:background="@color/transparent"
+                    android:text="복약 기록 조회하기"
                     android:textAlignment="viewStart"
-                    android:text="앱 설정" />
+                    android:textSize="24sp" />
 
                 <View
-                    android:background="@color/main_gray"
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:layout_height="1dp"
+                    android:background="@color/main_gray" />
 
                 <Button
-                    android:layout_marginVertical="20dp"
-                    android:textSize="24sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    android:textAlignment="viewStart"
-                    android:text="앱 설정" />
-
-                <View
-                    android:background="@color/main_gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
-
-                <Button
                     android:layout_marginVertical="20dp"
-                    android:textSize="24sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:background="@color/transparent"
+                    android:text="자주 묻는 질문"
                     android:textAlignment="viewStart"
-                    android:text="앱 설정" />
-
-                <View
-                    android:background="@color/main_gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:textSize="24sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -126,14 +114,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <ImageView
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/icon_call_center"/>
                 <Button
+                    android:id="@+id/Call_Service_Btn"
                     android:layout_marginVertical="20dp"
                     android:textSize="24sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:textAlignment="viewStart"
-                    android:text="앱 설정" />
+                    android:text="1:1 문의하기" />
 
                 <View
                     android:background="@color/main_gray"
@@ -147,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:textAlignment="viewStart"
-                    android:text="앱 설정" />
+                    android:text="서비스 이용약관" />
 
                 <View
                     android:background="@color/main_gray"
@@ -161,26 +156,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/transparent"
                     android:textAlignment="viewStart"
-                    android:text="앱 설정" />
-
-                <View
-                    android:background="@color/main_gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
-
-                <Button
-                    android:layout_marginVertical="20dp"
-                    android:textSize="24sp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/transparent"
-                    android:textAlignment="viewStart"
-                    android:text="앱 설정" />
-
-                <View
-                    android:background="@color/main_gray"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"/>
+                    android:text="개인정보 처리방침" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
