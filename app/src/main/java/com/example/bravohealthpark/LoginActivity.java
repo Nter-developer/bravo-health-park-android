@@ -124,8 +124,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setSharedPreferenceIdPNumberTokens(Response<LoginResponse> response) {
-        SharedPreferenceBase.setSharedPreferenceSet(
-                response.body().getToken(), Collections.singleton(loginId.getText().toString()));
+        SharedPreferenceBase.setSharedPreference(
+                APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, response.body().getToken());
         SharedPreferenceBase.setSharedPreference(
                 UserPreferences.SHARED_PREFERENCE_USER_ID, loginId.getText().toString());
         SharedPreferenceBase.setSharedPreference(
