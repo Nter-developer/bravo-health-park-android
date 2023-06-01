@@ -2,8 +2,6 @@ package com.example.bravohealthpark.retrofit;
 
 import android.content.Context;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.IOException;
 import java.util.HashSet;
 import okhttp3.Interceptor;
@@ -29,7 +27,7 @@ public class ReceivedCookiesInterceptor implements Interceptor {
             }
 
             // Preference에 cookies를 넣어주는 작업을 수행
-            SharedPreferenceBase.setSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, cookies);
+            SharedPreferenceBase.setSharedPreferenceSet(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, cookies);
         }
         return originalResponse;
     }

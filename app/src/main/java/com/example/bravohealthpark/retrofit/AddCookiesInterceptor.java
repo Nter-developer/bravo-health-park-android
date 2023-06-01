@@ -24,7 +24,7 @@ public class AddCookiesInterceptor implements Interceptor {
         Request.Builder builder = chain.request().newBuilder();
 
         // Preference에서 cookies를 가져오는 작업을 수행
-        Set<String> preferences =  SharedPreferenceBase.getSharedPreference(
+        Set<String> preferences =  SharedPreferenceBase.getSharedPreferenceSet(
                 APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, new HashSet<String>());
 
         for (String cookie : preferences) {
