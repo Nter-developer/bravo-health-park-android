@@ -12,10 +12,11 @@ import okhttp3.Response;
 
 public class AddCookiesInterceptor implements Interceptor {
 
-    private Context context;
+    private static Context context;
 
-    public void setContext(Context context) {
+    public Interceptor setContext(Context context) {
         this.context = context;
+        return this;
     }
 
     @Override
@@ -23,7 +24,8 @@ public class AddCookiesInterceptor implements Interceptor {
         Request.Builder builder = chain.request().newBuilder();
 
         // Preference에서 cookies를 가져오는 작업을 수행
-        Set<String> preferences =  SharedPreferenceBase.getSharedPreference(context, APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, new HashSet<String>());
+        Set<String> preferences =  SharedPreferenceBase.getSharedPreference(
+                APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, new HashSet<String>());
 
         for (String cookie : preferences) {
             builder.addHeader("Cookie", cookie);

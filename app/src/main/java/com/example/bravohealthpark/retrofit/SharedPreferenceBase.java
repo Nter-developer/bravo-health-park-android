@@ -7,20 +7,29 @@ import java.util.Set;
 
 public class SharedPreferenceBase {
 
-    private static final String PREFERENCE_API = "APIPreference";
     private static SharedPreferences sharedPreferences;
-    private static Context context;
 
-    public static void setSharedPreference(Context context, String key, Set<String> value) {
-        sharedPreferences = context.getSharedPreferences(PREFERENCE_API, Context.MODE_PRIVATE);
+    public static void setSharedPreference(String key, Set<String> value) {
+        if (sharedPreferences == null) {
+            // Error handling or initialization logic if needed
+            return;
+        }
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putStringSet(key, value);
         editor.apply();
     }
 
-    public static Set<String> getSharedPreference(Context context, String key, Set<String> value) {
-        sharedPreferences = context.getSharedPreferences(PREFERENCE_API, Context.MODE_PRIVATE);
-        return sharedPreferences.getStringSet(key, value);
+    public static Set<String> getSharedPreference(String key, Set<String> defaultValue) {
+        if (sharedPreferences == null) {
+            // Error handling or initialization logic if needed
+            return defaultValue;
+        }
+        return sharedPreferences.getStringSet(key, defaultValue);
+    }
+
+    public static void initialize(Context context) {
+        sharedPreferences = context.getSharedPreferences(
+                APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, Context.MODE_PRIVATE);
     }
 }
 

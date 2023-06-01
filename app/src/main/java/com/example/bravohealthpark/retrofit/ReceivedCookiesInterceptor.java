@@ -29,7 +29,7 @@ public class ReceivedCookiesInterceptor implements Interceptor {
             }
 
             // Preference에 cookies를 넣어주는 작업을 수행
-            SharedPreferenceBase.setSharedPreference(context, APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, cookies);
+            SharedPreferenceBase.setSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, cookies);
         }
         return originalResponse;
     }
