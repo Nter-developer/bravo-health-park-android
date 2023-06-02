@@ -5,20 +5,52 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.example.bravohealthpark.retrofit.APIPreferences;
+import com.example.bravohealthpark.retrofit.RetrofitClient;
+import com.example.bravohealthpark.retrofit.SharedPreferenceBase;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
 
     private RelativeLayout GoCalender;
+    private TextView textViewHelloUser;
+    private static Call<FindUserResponse> call;
+    private static RetrofitService retrofitService;
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+        textViewHelloUser = v.findViewById(R.id.textViewHelloUser);
+        initRetrofitServiceAndCall();
+
+        call.enqueue(new Callback<FindUserResponse>() {
+
+            @Override
+            public void onResponse(Call<FindUserResponse> call, Response<FindUserResponse> response) {
+                if(response.isSuccessful()) {
+                    SharedPreferenceBase.setSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_NAME, response.body().getUsername());
+                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_NAME, new String()));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FindUserResponse> call, Throwable t) {
+
+            }
+        });
 
         GoCalender = v.findViewById(R.id.GoCalender_Btn);
 
@@ -30,5 +62,10 @@ public class HomeFragment extends Fragment {
             }
         });
         return v;
+    }
+
+    private void initRetrofitServiceAndCall() {
+        retrofitService = RetrofitClient.getApiService();
+        call = retrofitService.sendFindMyUserRequest();
     }
 }

@@ -2,6 +2,7 @@ package com.example.bravohealthpark;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +18,7 @@ import com.example.bravohealthpark.retrofit.SharedPreferenceBase;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Optional;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +36,10 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        if(SharedPreferenceBase.getSharedPreferenceSet(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, new HashSet<String>()).size() != 0) {
+        Optional<String> token = Optional.ofNullable(
+                SharedPreferenceBase.getSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, new String()));
+
+        if(token.isPresent()) {
             callAutoLoginRequest(new LoginDto(
                     SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_ID, new String()),
                     SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_PNUMBER, new String())));
@@ -124,8 +129,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void setSharedPreferenceIdPNumberTokens(Response<LoginResponse> response) {
-        SharedPreferenceBase.setSharedPreference(
-                APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, response.body().getToken());
         SharedPreferenceBase.setSharedPreference(
                 UserPreferences.SHARED_PREFERENCE_USER_ID, loginId.getText().toString());
         SharedPreferenceBase.setSharedPreference(
