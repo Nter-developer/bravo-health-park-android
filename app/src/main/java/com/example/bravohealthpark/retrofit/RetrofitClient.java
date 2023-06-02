@@ -35,28 +35,9 @@ public class RetrofitClient {
             loggingInterceptor = new HttpLoggingInterceptor();
             loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             httpClientBuilder = new OkHttpClient.Builder();
-            httpClientBuilder.addInterceptor(loggingInterceptor);
             httpClientBuilder.addInterceptor(new AddCookiesInterceptor());
             httpClientBuilder.addInterceptor(new ReceivedCookiesInterceptor());
-            httpClientBuilder.protocols(Collections.singletonList(Protocol.HTTP_1_1));
-
-            retrofitClient = new Retrofit.Builder()
-                    .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(httpClientBuilder.build()) // OkHttpClient 설정 적용
-                    .build();
-        }
-        return retrofitClient;
-    }
-
-    private static Retrofit getInstanceWithContext(Context context){
-        if(retrofitClient == null) {
-            loggingInterceptor = new HttpLoggingInterceptor();
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            httpClientBuilder = new OkHttpClient.Builder();
             httpClientBuilder.addInterceptor(loggingInterceptor);
-            httpClientBuilder.addInterceptor(new ReceivedCookiesInterceptor());
-            httpClientBuilder.addInterceptor(new AddCookiesInterceptor().setContext(context));
             httpClientBuilder.protocols(Collections.singletonList(Protocol.HTTP_1_1));
 
             retrofitClient = new Retrofit.Builder()
