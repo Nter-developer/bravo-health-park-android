@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.bravohealthpark.retrofit.SharedPreferenceBase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         BottomNavigationView = findViewById(R.id.BottomNavi);
+
+        SharedPreferenceBase.initialize(MainActivity.this.getApplicationContext());
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.MainFrame, new HomeFragment()).commit();
