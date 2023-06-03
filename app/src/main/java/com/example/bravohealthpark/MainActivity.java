@@ -3,7 +3,9 @@ package com.example.bravohealthpark;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 
 import com.example.bravohealthpark.retrofit.SharedPreferenceBase;
@@ -35,6 +37,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.Setting_Fragment:
                         getSupportFragmentManager().beginTransaction().replace(R.id.MainFrame,new SettingFragment()).commit();
                         return true;
+                    case R.id.Camera_Fragment:
+                        openCamera();
+                        return true;
+
                 }
                 return false;
             }
@@ -45,6 +51,13 @@ public class MainActivity extends AppCompatActivity {
             if (fragment.equals("setting")) {
                 BottomNavigationView.setSelectedItemId(R.id.Setting_Fragment);
             }
+        }
+
+    }
+    private void openCamera() {
+        Intent cameraIntent = new Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA);
+        if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(cameraIntent);
         }
     }
 }

@@ -252,7 +252,7 @@
               android:id="@+id/Alarm_ListView"
               android:layout_width="match_parent"
               android:layout_height="94dp"
-              tools:listitem="@layout/round_theme">
+              tools:listitem="@layout/alarm_list">
           </ListView>
         </LinearLayout>
       </LinearLayout>
