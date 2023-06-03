@@ -32,7 +32,7 @@ public class AdapterActivity extends BaseAdapter {
         ViewHolder holder;
         if(convertView == null) {
             holder = new ViewHolder();
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.round_theme, parent, false);
+            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.alarm_list, parent, false);
 
             TextView hourText = (TextView)convertView.findViewById(R.id.textTime1);
             TextView minuteText = (TextView)convertView.findViewById(R.id.textTime2);

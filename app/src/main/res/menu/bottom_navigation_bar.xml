@@ -11,9 +11,9 @@
         android:icon="@drawable/icon_alarm"
         android:title="알람추가"/>
     <item
-        android:id="@+id/QR_Fragment"
+        android:id="@+id/Camera_Fragment"
         android:enabled="true"
-        android:icon="@drawable/icon_qrcode"
+        android:icon="@drawable/icon_camera"
         android:title="QR코드"/>
     <item
         android:id="@+id/Setting_Fragment"
