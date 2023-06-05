@@ -15,19 +15,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SearchMedActivity"
+            android:name=".presentation.activities.SearchMedActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.activities.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".presentation.activities.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".PrefSoundActivity"
+            android:name=".presentation.activities.PrefSoundActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".presentation.activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,13 +36,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProfEditActivity"
+            android:name=".presentation.activities.ProfEditActivity"
             android:exported="false" />
         <activity
-            android:name=".MedRegistrationActivity"
+            android:name=".presentation.activities.MedRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".presentation.activities.SplashActivity"
             android:exported="false" />
     </application>
 
