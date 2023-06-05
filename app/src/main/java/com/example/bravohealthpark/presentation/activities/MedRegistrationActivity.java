@@ -1,6 +1,5 @@
 package com.example.bravohealthpark.presentation.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -18,6 +17,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TimePicker;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bravohealthpark.R;
 

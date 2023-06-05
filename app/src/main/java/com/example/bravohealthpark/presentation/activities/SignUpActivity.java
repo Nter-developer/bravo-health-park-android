@@ -2,19 +2,19 @@ package com.example.bravohealthpark.presentation.activities;
 
 import static com.example.bravohealthpark.infra.retrofit.RetrofitClient.getApiService;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.bravohealthpark.domain.authority.dto.AuthorityDto;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.bravohealthpark.R;
-import com.example.bravohealthpark.infra.retrofit.RetrofitService;
+import com.example.bravohealthpark.domain.authority.dto.AuthorityDto;
 import com.example.bravohealthpark.domain.user.dto.SignupResult;
 import com.example.bravohealthpark.domain.user.dto.UserDto;
+import com.example.bravohealthpark.infra.retrofit.RetrofitService;
 
 import java.io.IOException;
 import java.util.HashSet;

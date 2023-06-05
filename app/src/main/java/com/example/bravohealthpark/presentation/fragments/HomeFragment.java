@@ -2,22 +2,21 @@ package com.example.bravohealthpark.presentation.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.user.dto.FindUserResponse;
+import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
+import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
 import com.example.bravohealthpark.infra.retrofit.RetrofitService;
 import com.example.bravohealthpark.presentation.activities.MedRegistrationActivity;
-import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
-import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 
 import retrofit2.Call;
 import retrofit2.Callback;

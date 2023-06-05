@@ -1,10 +1,10 @@
 package com.example.bravohealthpark.presentation.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.widget.ListView;
 import android.widget.SearchView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.presentation.adapters.SearchAdapter;

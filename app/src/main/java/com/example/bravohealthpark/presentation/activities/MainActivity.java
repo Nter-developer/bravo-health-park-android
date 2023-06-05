@@ -1,12 +1,12 @@
 package com.example.bravohealthpark.presentation.activities;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;

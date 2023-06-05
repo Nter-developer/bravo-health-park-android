@@ -9,15 +9,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bravohealthpark.global.error.CustomToastMessage;
 import com.example.bravohealthpark.R;
-import com.example.bravohealthpark.infra.retrofit.RetrofitService;
-import com.example.bravohealthpark.infra.preferences.UserPreferences;
-import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.domain.authority.dto.LoginDto;
 import com.example.bravohealthpark.domain.authority.dto.LoginResponse;
-import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
+import com.example.bravohealthpark.global.error.CustomToastMessage;
+import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
+import com.example.bravohealthpark.infra.preferences.UserPreferences;
+import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
+import com.example.bravohealthpark.infra.retrofit.RetrofitService;
 
 import java.util.Optional;
 

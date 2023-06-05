@@ -1,8 +1,8 @@
 package com.example.bravohealthpark.presentation.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bravohealthpark.R;
 

@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.calendar.CalendarAdapter;
 import com.example.bravohealthpark.domain.calendar.CalendarUtil;
-import com.example.bravohealthpark.R;
 
 import java.time.LocalDate;
 import java.time.YearMonth;
