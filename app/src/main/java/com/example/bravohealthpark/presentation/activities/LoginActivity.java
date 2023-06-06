@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initRetrofitServiceAndCall(LoginDto loginDto) {
-        retrofitService = RetrofitClient.getApiService();
+        retrofitService = RetrofitClient.getApiService(RetrofitService.class);
         call = retrofitService.sendLoginRequest(loginDto);
     }
 

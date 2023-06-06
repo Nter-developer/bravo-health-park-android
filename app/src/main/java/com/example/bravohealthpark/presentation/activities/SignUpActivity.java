@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                retrofitService = getApiService();
+                retrofitService = getApiService(RetrofitService.class);
 
                 HashSet<AuthorityDto> authorityDtoSet = new HashSet<>();
                 authorityDtoSet.add(new AuthorityDto("ROLE_USER"));

@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initRetrofitServiceAndCall() {
-        retrofitService = RetrofitClient.getApiService();
+        retrofitService = RetrofitClient.getApiService(RetrofitService.class);
         call = retrofitService.sendFindMyUserRequest();
     }
 }

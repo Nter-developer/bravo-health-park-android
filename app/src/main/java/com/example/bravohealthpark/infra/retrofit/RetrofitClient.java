@@ -1,5 +1,6 @@
 package com.example.bravohealthpark.infra.retrofit;
 
+import com.example.bravohealthpark.domain.medicine.services.MedicationInfoService;
 import com.example.bravohealthpark.infra.network.AddCookiesInterceptor;
 import com.example.bravohealthpark.infra.network.ReceivedCookiesInterceptor;
 
@@ -17,9 +18,11 @@ public class RetrofitClient {
     private static HttpLoggingInterceptor loggingInterceptor;
     private static Retrofit retrofitClient;
 
-    public static RetrofitService getApiService() {
-        return getInstance().create(RetrofitService.class);
+
+    public static <T extends RetrofitService> T getApiService(Class<T> retrofitService) {
+        return getInstance().create(retrofitService);
     }
+
 
     private static Retrofit getInstance(){
         if(retrofitClient == null) {
