@@ -1,7 +1,6 @@
 package com.example.bravohealthpark.infra.network;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
@@ -22,12 +21,12 @@ public class ReceivedCookiesInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Response originalResponse = chain.proceed(chain.request());
-        String token = originalResponse.headers("Authorization").toString();
-
-        token = token.replace("[", "").replace("]", "");
-        // Preference에 cookies를 넣어주는 작업을 수행
-        SharedPreferenceBase.setSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, token);
-        Log.i("SharedToken", token);
+        if(!originalResponse.headers("Authorization").isEmpty()) {
+            String token = originalResponse.headers("Authorization").toString();
+            token = token.replace("[", "").replace("]", "");
+            // Preference에 cookies를 넣어주는 작업을 수행
+            SharedPreferenceBase.setSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, token);
+        }
         return originalResponse;
     }
 }

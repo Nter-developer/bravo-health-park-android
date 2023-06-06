@@ -17,8 +17,9 @@ public class RetrofitClient {
     private static HttpLoggingInterceptor loggingInterceptor;
     private static Retrofit retrofitClient;
 
-    public static RetrofitService getApiService() {
-        return getInstance().create(RetrofitService.class);
+
+    public static <T> T getApiService(Class<T> ApiService) {
+        return getInstance().create(ApiService);
     }
 
     private static Retrofit getInstance(){

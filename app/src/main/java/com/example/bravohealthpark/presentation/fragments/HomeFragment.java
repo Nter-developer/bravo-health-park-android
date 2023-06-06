@@ -43,8 +43,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<FindUserResponse> call, Response<FindUserResponse> response) {
                 if(response.isSuccessful()) {
-                    SharedPreferenceBase.setSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_NAME, response.body().getUsername());
-                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_NAME, new String()));
+                    SharedPreferenceBase.setSharedPreference(UserPreferences.USER_PREFERENCE_USER_NAME, response.body().getUsername());
+                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.USER_PREFERENCE_USER_NAME));
                 }
             }
 
@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initRetrofitServiceAndCall() {
-        retrofitService = RetrofitClient.getApiService();
+        retrofitService = RetrofitClient.getApiService(RetrofitService.class);
         call = retrofitService.sendFindMyUserRequest();
     }
 }
