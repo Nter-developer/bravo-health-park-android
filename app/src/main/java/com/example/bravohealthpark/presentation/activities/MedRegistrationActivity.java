@@ -1,43 +1,41 @@
 package com.example.bravohealthpark.presentation.activities;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.Context;
-import android.graphics.PorterDuff;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bravohealthpark.R;
+import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoRequest;
+import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoResponse;
+import com.example.bravohealthpark.domain.medicine.services.MedicationInfoService;
+import com.example.bravohealthpark.global.error.ToastErrorMessage;
+import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
+import com.example.bravohealthpark.infra.preferences.UserPreferences;
+import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.Optional;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MedRegistrationActivity extends AppCompatActivity {
 
-    private EditText medName;
-    private LinearLayout ParentLayout;
-    private EditText StartDay, EndDay;
-    private Button openCalStartBtn, openCalEndBtn;
-    private CheckBox everydayBtn;
-    private Button monBtn, tueBtn, wedBtn, thuBtn, friBtn, satBtn, sunBtn;
-    private Button addTimeBtn;
-    private ListView alarmListView;
-    private AdapterActivity adapter;
+    private static MedicationInfoService medicationInfoService;
+    Call<SaveMediInfoResponse> call;
+    private static SaveMediInfoRequest saveMediInfoRequest;
+    private EditText editTextMediName, editTextDoseDays;
+    private CheckBox checkBoxAfterMeal, checkBoxBeforeMeal, checkBoxImmeAfterMeal;
+    private CheckBox checkBoxMorning, checkBoxLunch, checkBoxDinner, checkBoxNight;
+    private Button buttonMediRegister;
 
     void hideKeyboard()
     {
@@ -49,244 +47,89 @@ public class MedRegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_med_registration);
+        initComponents();
 
-        medName = findViewById(R.id.Med_Name);
-        ParentLayout = findViewById(R.id.ParentLayout);
-        StartDay = findViewById(R.id.StartDay);
-        EndDay = findViewById(R.id.EndDay);
-        openCalStartBtn = findViewById(R.id.OpenCal_Start);
-        openCalEndBtn = findViewById(R.id.OpenCal_End);
-        everydayBtn = findViewById(R.id.Check_Everyday);
-        monBtn = findViewById(R.id.Check_Mon);
-        tueBtn = findViewById(R.id.Check_Tue);
-        wedBtn = findViewById(R.id.Check_Wed);
-        thuBtn = findViewById(R.id.Check_Thu);
-        friBtn = findViewById(R.id.Check_Fri);
-        satBtn = findViewById(R.id.Check_Sat);
-        sunBtn = findViewById(R.id.Check_Sun);
-        addTimeBtn = findViewById(R.id.AddTime_Btn);
-        alarmListView = findViewById(R.id.Alarm_ListView);
-        alarmListView = (ListView) findViewById(R.id.Alarm_ListView);
-        adapter = new AdapterActivity();
-        alarmListView.setAdapter(adapter);
-
-        alarmListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        buttonMediRegister.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onClick(View view) {
+                validateMediInfoRegisterForm();
 
-            }
-        });
+                createSaveMediInfoRequestDto();
+                medicationInfoService = RetrofitClient.getApiService(MedicationInfoService.class);
+                String loginId = SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_LOGIN_ID);
+                call = medicationInfoService.saveMedicationInfo(loginId, saveMediInfoRequest);
 
-        addTimeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 현재 시간 구하기
-                final Calendar currentTime = Calendar.getInstance();
-                int hour = currentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = currentTime.get(Calendar.MINUTE);
-
-                // TimePickerDialog 띄우기
-                TimePickerDialog timePicker = new TimePickerDialog(MedRegistrationActivity.this, android.R.style.Theme_Holo_Light_Dialog_NoActionBar, new TimePickerDialog.OnTimeSetListener() {
+                call.enqueue(new Callback<SaveMediInfoResponse>() {
                     @Override
-                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        // 선택한 시간을 Adapter에 추가하여 ListView에 보여주기
-                        adapter.addItem(hourOfDay, minute, (hourOfDay < 12 ? "오전" : "오후"));
-                        adapter.notifyDataSetChanged();
+                    public void onResponse(Call<SaveMediInfoResponse> call, Response<SaveMediInfoResponse> response) {
+                        if(response.isSuccessful()) {
+                            toastCustomMessage(ToastErrorMessage.MEDI_REGISTER_SUCCESS);
+                            intentMainActivityAndClearTask();
+                        }
+                        else {
+                            toastCustomMessage(ToastErrorMessage.MEDI_REGISTER_FAIL);
+                        }
                     }
-                }, hour, minute, false);
-                timePicker.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-                timePicker.show();
+
+                    @Override
+                    public void onFailure(Call<SaveMediInfoResponse> call, Throwable t) {
+                        toastCustomMessage(ToastErrorMessage.ERROR_MESSAGE_NETWORK_ERROR);
+                    }
+                });
             }
         });
+    }
 
-        ParentLayout.setOnTouchListener(new View.OnTouchListener()
-        {
-            @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                hideKeyboard();
-                return false;
+    private boolean validateMediInfoRegisterForm() {
+        Optional<String> doseDays = Optional.ofNullable(editTextMediName.getText().toString());
+        if(doseDays.isPresent()) {
+            try {
+                int number = Integer.parseInt(doseDays.get().toString());
+                // 정상적으로 문자열을 정수로 변환한 경우에 대한 처리
+            } catch (NumberFormatException e) {
+                // 문자열이 올바른 형식이 아닌 경우에 대한 처리
+                // 예: 오류 메시지 출력, 기본값 설정 등
             }
-        });
+        }
+        boolean valid1 = Optional.ofNullable(editTextMediName.getText().toString()).isPresent();
+        boolean valid2 = Optional.ofNullable(editTextDoseDays.getText().toString()).isPresent();
+        return valid1&&valid2;
+    }
 
-        long mNow = System.currentTimeMillis();
-        Date mReDate = new Date(mNow);
-        SimpleDateFormat mFormat = new SimpleDateFormat("yyyy - MM - dd");
-        String formatDate = mFormat.format(mReDate);
-        StartDay.setText(formatDate);
-        EndDay.setText(formatDate);
-        Calendar cal= Calendar.getInstance();
-        int sYear = cal.get(Calendar.YEAR);
-        int sMonth = cal.get(Calendar.MONTH);
-        int sDay = cal.get(Calendar.DAY_OF_MONTH);
+    private void createSaveMediInfoRequestDto() {
+        int dailyDose = 0;
+        if(checkBoxMorning.isChecked()) dailyDose++;
+        if(checkBoxLunch.isChecked()) dailyDose++;
+        if(checkBoxDinner.isChecked()) dailyDose++;
+        if(checkBoxNight.isChecked()) dailyDose++;
+        String str = Optional.ofNullable(editTextDoseDays.getText().toString()).orElse("");
+        int doseDays = Integer.parseInt(str);
+        saveMediInfoRequest = new SaveMediInfoRequest(
+                doseDays, editTextMediName.getText().toString(),
+                0, dailyDose);
+    }
 
-        DatePickerDialog datePickerDialog_Start = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                DecimalFormat formatter = new DecimalFormat("00");
-                String formattedMonth = formatter.format(month + 1);
-                String formattedDay = formatter.format(dayOfMonth);
-                StartDay.setText(year+" - " + formattedMonth + " - " + formattedDay);
-            }
-        }, sYear, sMonth, sDay);
+    private void initComponents() {
+        editTextMediName = (EditText) findViewById(R.id.edittext_input_medicine_name);
+        editTextDoseDays = (EditText) findViewById(R.id.edittext_input_dose_days);
+        checkBoxAfterMeal = (CheckBox) findViewById(R.id.checkbox_dose_30m_after_meal);
+        checkBoxBeforeMeal = (CheckBox) findViewById(R.id.checkbox_dose_30m_before_meal);
+        checkBoxImmeAfterMeal = (CheckBox) findViewById(R.id.checkbox_dose_immediately_after_eating);
+        checkBoxMorning = (CheckBox) findViewById(R.id.checkbox_dose_morning);
+        checkBoxLunch = (CheckBox) findViewById(R.id.checkbox_dose_lunch);
+        checkBoxDinner = (CheckBox) findViewById(R.id.checkbox_dose_dinner);
+        checkBoxNight = (CheckBox) findViewById(R.id.checkbox_dose_night);
+        buttonMediRegister = (Button) findViewById(R.id.button_medi_register);
+    }
 
-        DatePickerDialog datePickerDialog_End = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                DecimalFormat formatter = new DecimalFormat("00");
-                String formattedMonth = formatter.format(month + 1);
-                String formattedDay = formatter.format(dayOfMonth);
-                EndDay.setText(year+" - " + formattedMonth + " - " + formattedDay);
-            }
-        }, sYear, sMonth, sDay);
+    private void intentMainActivityAndClearTask() {
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
 
-        openCalStartBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (openCalStartBtn.isClickable()) {
-                    datePickerDialog_Start.show();
-                }
-            }
-        });
-
-        openCalEndBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (openCalEndBtn.isClickable()) {
-                    datePickerDialog_End.show();
-                }
-            }
-        });
-
-        everydayBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    monBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    tueBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    wedBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    thuBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    friBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    satBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    sunBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                }
-                else {
-                    monBtn.getBackground().clearColorFilter();
-                    tueBtn.getBackground().clearColorFilter();
-                    wedBtn.getBackground().clearColorFilter();
-                    thuBtn.getBackground().clearColorFilter();
-                    friBtn.getBackground().clearColorFilter();
-                    satBtn.getBackground().clearColorFilter();
-                    sunBtn.getBackground().clearColorFilter();
-                }
-            }
-        });
-
-        final boolean[] isChecked = {false};
-
-        monBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isChecked[0]){
-                    monBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    isChecked[0] = true;
-
-                }
-                else{
-                    monBtn.getBackground().clearColorFilter();
-                    isChecked[0] = false;
-                }
-            }
-        });
-
-        tueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isChecked[0]){
-                    tueBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    isChecked[0] = true;
-
-                }
-                else{
-                    tueBtn.getBackground().clearColorFilter();
-                    isChecked[0] = false;
-                }
-            }
-        });
-
-        wedBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isChecked[0]){
-                    wedBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    isChecked[0] = true;
-
-                }
-                else{
-                    wedBtn.getBackground().clearColorFilter();
-                    isChecked[0] = false;
-                }
-            }
-        });
-
-        thuBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isChecked[0]){
-                    thuBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    isChecked[0] = true;
-
-                }
-                else{
-                    thuBtn.getBackground().clearColorFilter();
-                    isChecked[0] = false;
-                }
-            }
-        });
-
-        friBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isChecked[0]){
-                    friBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    isChecked[0] = true;
-
-                }
-                else{
-                    friBtn.getBackground().clearColorFilter();
-                    isChecked[0] = false;
-                }
-            }
-        });
-
-        satBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isChecked[0]){
-                    satBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    isChecked[0] = true;
-
-                }
-                else{
-                    satBtn.getBackground().clearColorFilter();
-                    isChecked[0] = false;
-                }
-            }
-        });
-
-        sunBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!isChecked[0]){
-                    sunBtn.getBackground().setColorFilter(getResources().getColor(R.color.button_checked), PorterDuff.Mode.SRC_IN);
-                    isChecked[0] = true;
-
-                }
-                else{
-                    sunBtn.getBackground().clearColorFilter();
-                    isChecked[0] = false;
-                }
-            }
-        });
+    private void toastCustomMessage(String customMessage) {
+        Toast.makeText(MedRegistrationActivity.this.getApplicationContext(),
+                customMessage, Toast.LENGTH_SHORT).show();
     }
 }
