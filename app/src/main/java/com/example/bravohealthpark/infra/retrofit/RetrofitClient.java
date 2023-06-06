@@ -19,10 +19,9 @@ public class RetrofitClient {
     private static Retrofit retrofitClient;
 
 
-    public static <T extends RetrofitService> T getApiService(Class<T> retrofitService) {
-        return getInstance().create(retrofitService);
+    public static <T> T getApiService(Class<T> ApiService) {
+        return getInstance().create(ApiService);
     }
-
 
     private static Retrofit getInstance(){
         if(retrofitClient == null) {
