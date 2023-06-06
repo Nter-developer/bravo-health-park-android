@@ -17,7 +17,7 @@
       android:layout_marginTop="80dp"
       android:orientation="vertical">
     <TextView
-        android:text="어떤 약을 드시나요?"
+        android:text="@string/ask_medicine"
         android:textSize="36sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -27,7 +27,7 @@
         android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="처방전 사진으로 등록할 수도 수 있어요"/>
+        android:text="@string/take_picture_recommend"/>
   </LinearLayout>
 
   <LinearLayout
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="약 이름"/>
+        android:text="@string/medicine_name"/>
     <EditText
         android:layout_marginTop="10dp"
         android:id="@+id/edittext_input_medicine_name"
@@ -58,23 +58,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="일일 복용 횟수"/>
+        android:text="@string/dose_days"/>
     <EditText
         android:layout_marginTop="10dp"
-        android:id="@+id/edittext_input_dose_day"
-        android:background="@drawable/shape_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"/>
-    <TextView
-        android:textSize="20sp"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="복용 일수"/>
-    <EditText
-        android:layout_marginTop="10dp"
-        android:id="@+id/edittext_input_daily_dose"
+        android:id="@+id/edittext_input_dose_days"
         android:background="@drawable/shape_edittext"
         android:layout_width="match_parent"
         android:layout_height="60dp"/>
@@ -85,54 +72,61 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-      <Button
-          android:id="@+id/button_dose_time_morning"
-          android:text="아침"
-          android:layout_margin="10dp"
-          android:background="@drawable/shape_circle_button"
-          android:layout_width="60dp"
-          android:layout_height="60dp" />
-      <Button
-          android:id="@+id/button_dose_time_lunch"
-          android:text="점심"
-          android:layout_margin="10dp"
-          android:background="@drawable/shape_circle_button"
-          android:layout_width="60dp"
-          android:layout_height="60dp" />
-      <Button
-          android:id="@+id/button_dose_time_dinner"
-          android:text="저녁"
-          android:layout_margin="10dp"
-          android:background="@drawable/shape_circle_button"
-          android:layout_width="60dp"
-          android:layout_height="60dp" />
-      <Button
-          android:id="@+id/button_dose_time_night"
-          android:text="자기 전"
-          android:layout_margin="10dp"
-          android:background="@drawable/shape_circle_button"
-          android:layout_width="60dp"
-          android:layout_height="60dp" />
+      <CheckBox
+          android:textSize="16sp"
+          android:id="@+id/checkbox_dose_morning"
+          android:layout_width="0dp"
+          android:layout_height="40dp"
+          android:text="@string/morning"
+          android:layout_weight="1"/>
+      <CheckBox
+          android:textSize="16sp"
+          android:id="@+id/checkbox_dose_lunch"
+          android:layout_width="0dp"
+          android:layout_height="40dp"
+          android:text="@string/lunch"
+          android:layout_weight="1"/>
+      <CheckBox
+          android:textSize="16sp"
+          android:id="@+id/checkbox_dose_dinner"
+          android:layout_width="0dp"
+          android:layout_height="40dp"
+          android:text="@string/dinner"
+          android:layout_weight="1"/>
+      <CheckBox
+          android:textSize="16sp"
+          android:id="@+id/checkbox_dose_night"
+          android:layout_width="0dp"
+          android:layout_height="40dp"
+          android:text="@string/before_sleep"
+          android:layout_weight="1"/>
     </LinearLayout>
     <LinearLayout
         android:id="@+id/linearLayout_dose_timing"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-      <Button
-          android:id="@+id/button_dose_timing_before_meal"
-          android:text="식전"
-          android:layout_margin="20dp"
-          android:background="@drawable/shape_circle_button"
-          android:layout_width="80dp"
-          android:layout_height="80dp" />
-      <Button
-          android:id="@+id/button_dose_timing_after_meal"
-          android:text="식후"
-          android:layout_margin="20dp"
-          android:background="@drawable/shape_circle_button"
-          android:layout_width="80dp"
-          android:layout_height="80dp" />
+      <CheckBox
+          android:textSize="16sp"
+          android:id="@+id/checkbox_dose_30m_after_meal"
+          android:layout_width="0dp"
+          android:layout_height="40dp"
+          android:text="@string/after_meal"
+          android:layout_weight="1"/>
+      <CheckBox
+          android:textSize="16sp"
+          android:id="@+id/checkbox_dose_30m_before_meal"
+          android:layout_width="0dp"
+          android:layout_height="40dp"
+          android:text="@string/before_meal"
+          android:layout_weight="1"/>
+      <CheckBox
+          android:textSize="16sp"
+          android:id="@+id/checkbox_dose_immediately_after_eating"
+          android:layout_width="0dp"
+          android:layout_height="40dp"
+          android:text="@string/immediately_after_meal"
+          android:layout_weight="1"/>
     </LinearLayout>
   </LinearLayout>
   <LinearLayout
@@ -142,9 +136,10 @@
       app:layout_constraintHorizontal_chainStyle="packed"
       android:layout_width="match_parent"
       android:layout_height="wrap_content">
-
     <Button
-        android:text="약 등록"
+        android:id="@+id/button_medi_register"
+        android:textSize="20sp"
+        android:text="@string/med_register"
         android:textColor="@color/white"
         android:background="@drawable/shape_button_on"
         android:layout_width="match_parent"
