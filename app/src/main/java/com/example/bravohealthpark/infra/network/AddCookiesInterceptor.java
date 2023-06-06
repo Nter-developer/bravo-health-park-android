@@ -20,7 +20,9 @@ public class AddCookiesInterceptor implements Interceptor {
         String token =  SharedPreferenceBase.getSharedPreference(
                 APIPreferences.SHARED_PREFERENCE_NAME_COOKIE);
 
-        builder.addHeader("Authorization", token);
+        if(token != null) {
+            builder.addHeader("Authorization", token);
+        }
 
         // Web,Android,iOS 구분을 위해 User-Agent세팅
         builder.removeHeader("User-Agent").addHeader("User-Agent", "Android");
