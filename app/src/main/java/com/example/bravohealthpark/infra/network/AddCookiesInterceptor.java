@@ -1,6 +1,5 @@
 package com.example.bravohealthpark.infra.network;
 
-import android.util.Log;
 
 import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
@@ -19,7 +18,7 @@ public class AddCookiesInterceptor implements Interceptor {
 
         // Preference에서 token를 가져오는 작업을 수행
         String token =  SharedPreferenceBase.getSharedPreference(
-                APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, new String());
+                APIPreferences.SHARED_PREFERENCE_NAME_COOKIE);
 
         builder.addHeader("Authorization", token);
 

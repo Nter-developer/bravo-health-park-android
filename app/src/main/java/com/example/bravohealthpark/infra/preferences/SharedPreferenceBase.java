@@ -17,11 +17,11 @@ public class SharedPreferenceBase {
         editor.apply();
     }
 
-    public static String getSharedPreference(String key, String defaultValue) {
+    public static String getSharedPreference(String key) {
         if (sharedPreferences == null) {
             return null;
         }
-        return sharedPreferences.getString(key, defaultValue);
+        return sharedPreferences.getString(key, null);
     }
 
     public static void initialize(Context context) {

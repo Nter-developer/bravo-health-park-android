@@ -38,12 +38,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         Optional<String> token = Optional.ofNullable(
-                SharedPreferenceBase.getSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE, new String()));
+                SharedPreferenceBase.getSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE));
 
         if(token.isPresent()) {
             callAutoLoginRequest(new LoginDto(
-                    SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_ID, new String()),
-                    SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_PNUMBER, new String())));
+                    SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_ID),
+                    SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_PNUMBER)));
         }
 
         findComponents();

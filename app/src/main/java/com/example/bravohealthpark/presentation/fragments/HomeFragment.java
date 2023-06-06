@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment {
             public void onResponse(Call<FindUserResponse> call, Response<FindUserResponse> response) {
                 if(response.isSuccessful()) {
                     SharedPreferenceBase.setSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_NAME, response.body().getUsername());
-                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_NAME, new String()));
+                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_NAME));
                 }
             }
 
