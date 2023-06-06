@@ -42,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
 
         if(token.isPresent()) {
             callAutoLoginRequest(new LoginDto(
-                    SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_ID),
-                    SharedPreferenceBase.getSharedPreference(UserPreferences.SHARED_PREFERENCE_USER_PNUMBER)));
+                    SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_LOGIN_ID),
+                    SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_PHONE_NUMBER)));
         }
 
         findComponents();
@@ -131,8 +131,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void setSharedPreferenceIdPNumberTokens(Response<LoginResponse> response) {
         SharedPreferenceBase.setSharedPreference(
-                UserPreferences.SHARED_PREFERENCE_USER_ID, loginId.getText().toString());
+                UserPreferences.PREFERENCE_USER_LOGIN_ID, loginId.getText().toString());
         SharedPreferenceBase.setSharedPreference(
-                UserPreferences.SHARED_PREFERENCE_USER_PNUMBER, phoneNumber.getText().toString());
+                UserPreferences.PREFERENCE_USER_PHONE_NUMBER, phoneNumber.getText().toString());
     }
 }
