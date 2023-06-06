@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.authority.dto.LoginDto;
 import com.example.bravohealthpark.domain.authority.dto.LoginResponse;
-import com.example.bravohealthpark.global.error.CustomToastMessage;
+import com.example.bravohealthpark.global.error.ToastErrorMessage;
 import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
@@ -81,13 +81,13 @@ public class LoginActivity extends AppCompatActivity {
                     intentMainActivityAndClearTask();
                 }
                 else {
-                    toastCustomMessage(CustomToastMessage.ERROR_MESSAGE_LOGIN_FAIL);
+                    toastCustomMessage(ToastErrorMessage.ERROR_MESSAGE_LOGIN_FAIL);
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                toastCustomMessage(CustomToastMessage.ERROR_MESSAGE_NETWORK_ERROR);
+                toastCustomMessage(ToastErrorMessage.ERROR_MESSAGE_NETWORK_ERROR);
             }
         });
     }
@@ -102,13 +102,13 @@ public class LoginActivity extends AppCompatActivity {
                     intentMainActivityAndClearTask();
                 }
                 else {
-                    toastCustomMessage(CustomToastMessage.ERROR_MESSAGE_LOGIN_FAIL);
+                    toastCustomMessage(ToastErrorMessage.ERROR_MESSAGE_LOGIN_FAIL);
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                toastCustomMessage(CustomToastMessage.ERROR_MESSAGE_NETWORK_ERROR);
+                toastCustomMessage(ToastErrorMessage.ERROR_MESSAGE_NETWORK_ERROR);
             }
         });
     }

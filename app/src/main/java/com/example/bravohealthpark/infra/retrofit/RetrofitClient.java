@@ -1,6 +1,5 @@
 package com.example.bravohealthpark.infra.retrofit;
 
-import com.example.bravohealthpark.domain.medicine.services.MedicationInfoService;
 import com.example.bravohealthpark.infra.network.AddCookiesInterceptor;
 import com.example.bravohealthpark.infra.network.ReceivedCookiesInterceptor;
 

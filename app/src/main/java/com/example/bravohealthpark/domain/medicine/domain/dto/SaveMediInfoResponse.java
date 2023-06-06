@@ -1,5 +1,7 @@
 package com.example.bravohealthpark.domain.medicine.domain.dto;
 
+import com.example.bravohealthpark.domain.medicine.domain.model.State;
+
 import java.util.List;
 
 public class SaveMediInfoResponse {
@@ -9,9 +11,21 @@ public class SaveMediInfoResponse {
     private int medicationInfoId;
     private String memo;
     private String startDate;
-    private List<String> state;
-    private int tablets;
+    private State state;
+    private int tablet;
     private int times;
+
+    public SaveMediInfoResponse(int days, String endDate, String itemName, int medicationInfoId, String memo, String startDate, State state, int tablets, int times) {
+        this.days = days;
+        this.endDate = endDate;
+        this.itemName = itemName;
+        this.medicationInfoId = medicationInfoId;
+        this.memo = memo;
+        this.startDate = startDate;
+        this.state = state;
+        this.tablet = tablets;
+        this.times = times;
+    }
 
     public void setDays(int days) {
         this.days = days;
@@ -37,12 +51,12 @@ public class SaveMediInfoResponse {
         this.startDate = startDate;
     }
 
-    public void setState(List<String> state) {
+    public void setState(State state) {
         this.state = state;
     }
 
-    public void setTablets(int tablets) {
-        this.tablets = tablets;
+    public void setTablet(int tablet) {
+        this.tablet = tablet;
     }
 
     public void setTimes(int times) {

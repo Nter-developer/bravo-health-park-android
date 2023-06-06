@@ -1,7 +1,6 @@
 package com.example.bravohealthpark.infra.network;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;

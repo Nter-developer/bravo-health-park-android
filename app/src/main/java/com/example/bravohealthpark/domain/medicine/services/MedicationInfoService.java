@@ -11,6 +11,6 @@ import retrofit2.http.Path;
 public interface MedicationInfoService {
     @POST("/medicationInfo/{userId}")
     Call<SaveMediInfoResponse> saveMedicationInfo(
-            @Path("userId") Integer userId,
+            @Path("userId") String loginId,
             @Body SaveMediInfoRequest saveMediInfoRequest);
 }
