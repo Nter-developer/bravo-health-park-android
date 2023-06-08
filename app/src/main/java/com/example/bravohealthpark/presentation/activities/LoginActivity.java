@@ -20,7 +20,7 @@ import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
 import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
-import com.example.bravohealthpark.infra.retrofit.RetrofitService;
+import com.example.bravohealthpark.domain.user.UserRetrofitService;
 import com.example.bravohealthpark.infra.utils.Messages;
 
 import java.util.Optional;
@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private RetrofitService retrofitService;
+    private UserRetrofitService userRetrofitService;
     private Button buttonLogin, buttonSignup;
     private EditText editTextLoginId, editTextPNumber;
     private static Call<LoginResponse> callLogin;
@@ -122,8 +122,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initRetrofitServiceAndCreateCall(LoginDto loginDto) {
-        retrofitService = RetrofitClient.getApiService(RetrofitService.class);
-        callLogin = retrofitService.sendLoginRequest(loginDto);
+        userRetrofitService = RetrofitClient.getApiService(UserRetrofitService.class);
+        callLogin = userRetrofitService.sendLoginRequest(loginDto);
     }
 
     private void saveLogIdAndPNumber(Response<LoginResponse> response) {
