@@ -1,5 +1,6 @@
 package com.example.bravohealthpark.presentation.activities;
 
+import static com.example.bravohealthpark.infra.preferences.SharedPreferenceBase.getSharedPreference;
 import static com.example.bravohealthpark.infra.utils.ToastUtils.showToast;
 
 import android.content.Intent;
@@ -42,12 +43,12 @@ public class LoginActivity extends AppCompatActivity {
         initComponents();
 
         Optional<String> token = Optional.ofNullable(
-                SharedPreferenceBase.getSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE));
+                getSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE));
 
         if(token.isPresent()) {
             performAutoLoginRequest(new LoginDto(
-                    SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_LOGIN_ID),
-                    SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_PHONE_NUMBER)));
+                    getSharedPreference(UserPreferences.PREFERENCE_USER_LOGIN_ID),
+                    getSharedPreference(UserPreferences.PREFERENCE_USER_PHONE_NUMBER)));
         }
 
 
