@@ -1,8 +1,8 @@
 package com.example.bravohealthpark.presentation.activities;
 
 import static com.example.bravohealthpark.infra.retrofit.RetrofitClient.getApiService;
+import static com.example.bravohealthpark.infra.utils.IntentUtils.startNewActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -53,8 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
                 call.enqueue(new Callback<SignupResult>() {
                     @Override
                     public void onResponse(Call<SignupResult> call, Response<SignupResult> response) {
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        startActivity(intent);
+                        startNewActivity(getApplicationContext(), LoginActivity.class, true);
                     }
 
                     @Override

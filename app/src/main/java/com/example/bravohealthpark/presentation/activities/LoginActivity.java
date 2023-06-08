@@ -1,6 +1,7 @@
 package com.example.bravohealthpark.presentation.activities;
 
 import static com.example.bravohealthpark.infra.preferences.SharedPreferenceBase.getSharedPreference;
+import static com.example.bravohealthpark.infra.utils.IntentUtils.startNewActivity;
 import static com.example.bravohealthpark.infra.utils.ToastUtils.showToast;
 
 import android.content.Intent;
@@ -84,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()) {
                     showToast(getApplicationContext(), Messages.LOGIN_SUCCESS);
-                    startMainActivityAndClearTask();
+                    startNewActivity(getApplicationContext(), MainActivity.class, true);
                 }
                 else {
                     showToast(getApplicationContext(), ErrorMessages.LOGIN_FAIL);
@@ -106,7 +107,7 @@ public class LoginActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     showToast(getApplicationContext(), Messages.LOGIN_SUCCESS);
                     saveLogIdAndPNumber(response);
-                    startMainActivityAndClearTask();
+                    startNewActivity(getApplicationContext(), MainActivity.class, true);
                 }
                 else {
                     showToast(getApplicationContext(), ErrorMessages.LOGIN_FAIL);
@@ -123,12 +124,6 @@ public class LoginActivity extends AppCompatActivity {
     private void initRetrofitServiceAndCreateCall(LoginDto loginDto) {
         retrofitService = RetrofitClient.getApiService(RetrofitService.class);
         callLogin = retrofitService.sendLoginRequest(loginDto);
-    }
-
-    private void startMainActivityAndClearTask() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 
     private void saveLogIdAndPNumber(Response<LoginResponse> response) {

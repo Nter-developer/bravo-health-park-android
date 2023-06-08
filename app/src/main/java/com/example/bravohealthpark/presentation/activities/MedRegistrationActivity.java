@@ -1,9 +1,9 @@
 package com.example.bravohealthpark.presentation.activities;
 
+import static com.example.bravohealthpark.infra.utils.IntentUtils.startNewActivity;
 import static com.example.bravohealthpark.infra.utils.ToastUtils.showToast;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -67,7 +67,7 @@ public class MedRegistrationActivity extends AppCompatActivity {
                     public void onResponse(Call<SaveMediInfoResponse> call, Response<SaveMediInfoResponse> response) {
                         if(response.isSuccessful()) {
                             showToast(getApplicationContext(), Messages.MEDI_REGISTER_SUCCESS);
-                            intentMainActivityAndClearTask();
+                            startNewActivity(getApplicationContext(), MainActivity.class, true);
                         }
                         else {
                             showToast(getApplicationContext(), ErrorMessages.MEDI_REGISTER_FAIL);
@@ -123,11 +123,5 @@ public class MedRegistrationActivity extends AppCompatActivity {
         checkBoxDinner = (CheckBox) findViewById(R.id.checkbox_dose_dinner);
         checkBoxNight = (CheckBox) findViewById(R.id.checkbox_dose_night);
         buttonMediRegister = (Button) findViewById(R.id.button_medi_register);
-    }
-
-    private void intentMainActivityAndClearTask() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
     }
 }
