@@ -12,12 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.authority.dto.LoginDto;
 import com.example.bravohealthpark.domain.authority.dto.LoginResponse;
-import com.example.bravohealthpark.global.error.ToastErrorMessage;
+import com.example.bravohealthpark.global.error.ErrorMessages;
 import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
 import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
 import com.example.bravohealthpark.infra.retrofit.RetrofitService;
+import com.example.bravohealthpark.infra.utils.ToastUtils;
 
 import java.util.Optional;
 
@@ -81,13 +82,13 @@ public class LoginActivity extends AppCompatActivity {
                     startMainActivityAndClearTask();
                 }
                 else {
-                    showCustomToast(ToastErrorMessage.ERROR_MESSAGE_LOGIN_FAIL);
+                    ToastUtils.showToast(LoginActivity.this.getApplicationContext(), ErrorMessages.LOGIN_FAIL);
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                showCustomToast(ToastErrorMessage.ERROR_MESSAGE_NETWORK_ERROR);
+                showCustomToast(ErrorMessages.NETWORK_ERROR);
             }
         });
     }
@@ -102,13 +103,13 @@ public class LoginActivity extends AppCompatActivity {
                     startMainActivityAndClearTask();
                 }
                 else {
-                    showCustomToast(ToastErrorMessage.ERROR_MESSAGE_LOGIN_FAIL);
+                    showCustomToast(ErrorMessages.LOGIN_FAIL);
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                showCustomToast(ToastErrorMessage.ERROR_MESSAGE_NETWORK_ERROR);
+                showCustomToast(ErrorMessages.NETWORK_ERROR);
             }
         });
     }

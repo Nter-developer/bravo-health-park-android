@@ -16,10 +16,11 @@ import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoRequest;
 import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoResponse;
 import com.example.bravohealthpark.domain.medicine.services.MedicationInfoService;
-import com.example.bravohealthpark.global.error.ToastErrorMessage;
+import com.example.bravohealthpark.global.error.ErrorMessages;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
 import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
+import com.example.bravohealthpark.infra.utils.Messages;
 
 import java.util.Optional;
 
@@ -63,17 +64,17 @@ public class MedRegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<SaveMediInfoResponse> call, Response<SaveMediInfoResponse> response) {
                         if(response.isSuccessful()) {
-                            toastCustomMessage(ToastErrorMessage.MEDI_REGISTER_SUCCESS);
+                            toastCustomMessage(Messages.MEDI_REGISTER_SUCCESS);
                             intentMainActivityAndClearTask();
                         }
                         else {
-                            toastCustomMessage(ToastErrorMessage.MEDI_REGISTER_FAIL);
+                            toastCustomMessage(ErrorMessages.MEDI_REGISTER_FAIL);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<SaveMediInfoResponse> call, Throwable t) {
-                        toastCustomMessage(ToastErrorMessage.ERROR_MESSAGE_NETWORK_ERROR);
+                        toastCustomMessage(ErrorMessages.NETWORK_ERROR);
                     }
                 });
             }
