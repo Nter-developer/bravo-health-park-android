@@ -1,5 +1,7 @@
 package com.example.bravohealthpark.presentation.activities;
 
+import static com.example.bravohealthpark.infra.utils.ToastUtils.showToast;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,17 +66,17 @@ public class MedRegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<SaveMediInfoResponse> call, Response<SaveMediInfoResponse> response) {
                         if(response.isSuccessful()) {
-                            toastCustomMessage(Messages.MEDI_REGISTER_SUCCESS);
+                            showToast(getApplicationContext(), Messages.MEDI_REGISTER_SUCCESS);
                             intentMainActivityAndClearTask();
                         }
                         else {
-                            toastCustomMessage(ErrorMessages.MEDI_REGISTER_FAIL);
+                            showToast(getApplicationContext(), ErrorMessages.MEDI_REGISTER_FAIL);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<SaveMediInfoResponse> call, Throwable t) {
-                        toastCustomMessage(ErrorMessages.NETWORK_ERROR);
+                        showToast(getApplicationContext(), ErrorMessages.NETWORK_ERROR);
                     }
                 });
             }
@@ -127,10 +129,5 @@ public class MedRegistrationActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
-    }
-
-    private void toastCustomMessage(String customMessage) {
-        Toast.makeText(MedRegistrationActivity.this.getApplicationContext(),
-                customMessage, Toast.LENGTH_SHORT).show();
     }
 }

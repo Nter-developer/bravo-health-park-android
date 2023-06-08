@@ -2,8 +2,6 @@ package com.example.bravohealthpark.domain.medicine.domain.dto;
 
 import com.example.bravohealthpark.domain.medicine.domain.model.State;
 
-import java.util.List;
-
 public class SaveMediInfoResponse {
     private int days;
     private String endDate;

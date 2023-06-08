@@ -1,11 +1,12 @@
 package com.example.bravohealthpark.presentation.activities;
 
+import static com.example.bravohealthpark.infra.utils.ToastUtils.showToast;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,7 +19,7 @@ import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
 import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
 import com.example.bravohealthpark.infra.retrofit.RetrofitService;
-import com.example.bravohealthpark.infra.utils.ToastUtils;
+import com.example.bravohealthpark.infra.utils.Messages;
 
 import java.util.Optional;
 
@@ -52,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferenceBase.initialize(LoginActivity.this.getApplicationContext());
+                SharedPreferenceBase.initialize(getApplicationContext());
                 performLoginRequest(new LoginDto(editTextLoginId.getText().toString(), editTextPNumber.getText().toString()));
             }
         });
@@ -79,16 +80,17 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()) {
+                    showToast(getApplicationContext(), Messages.LOGIN_SUCCESS);
                     startMainActivityAndClearTask();
                 }
                 else {
-                    ToastUtils.showToast(LoginActivity.this.getApplicationContext(), ErrorMessages.LOGIN_FAIL);
+                    showToast(getApplicationContext(), ErrorMessages.LOGIN_FAIL);
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                showCustomToast(ErrorMessages.NETWORK_ERROR);
+                showToast(getApplicationContext(), ErrorMessages.NETWORK_ERROR);
             }
         });
     }
@@ -99,17 +101,18 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()) {
+                    showToast(getApplicationContext(), Messages.LOGIN_SUCCESS);
                     saveLogIdAndPNumber(response);
                     startMainActivityAndClearTask();
                 }
                 else {
-                    showCustomToast(ErrorMessages.LOGIN_FAIL);
+                    showToast(getApplicationContext(), ErrorMessages.LOGIN_FAIL);
                 }
             }
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                showCustomToast(ErrorMessages.NETWORK_ERROR);
+                showToast(getApplicationContext(), ErrorMessages.NETWORK_ERROR);
             }
         });
     }
@@ -117,11 +120,6 @@ public class LoginActivity extends AppCompatActivity {
     private void initRetrofitServiceAndCreateCall(LoginDto loginDto) {
         retrofitService = RetrofitClient.getApiService(RetrofitService.class);
         callLogin = retrofitService.sendLoginRequest(loginDto);
-    }
-
-    private void showCustomToast(String customMessage) {
-        Toast.makeText(LoginActivity.this.getApplicationContext(),
-                customMessage, Toast.LENGTH_SHORT).show();
     }
 
     private void startMainActivityAndClearTask() {
