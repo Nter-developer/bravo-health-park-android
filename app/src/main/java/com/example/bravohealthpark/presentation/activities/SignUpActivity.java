@@ -27,18 +27,15 @@ import retrofit2.Response;
 public class SignUpActivity extends AppCompatActivity {
 
     private Button signUpBtn;
-    private EditText editTextName, editTextPNumber, editTextId;
+    private EditText editTextName, editTextPNumber, editTextLoginId;
     private RetrofitService retrofitService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-
-        signUpBtn = (Button) findViewById(R.id.SignUp_Btn);
-        editTextId = (EditText) findViewById(R.id.EditText_Id);
-        editTextName = (EditText) findViewById(R.id.EditText_Name);
-        editTextPNumber = (EditText) findViewById(R.id.EditText_PhoneNumber);
+        // initialize components
+        initComponents();
 
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +46,7 @@ public class SignUpActivity extends AppCompatActivity {
                 HashSet<AuthorityDto> authorityDtoSet = new HashSet<>();
                 authorityDtoSet.add(new AuthorityDto("ROLE_USER"));
                 UserDto requestData = new UserDto(authorityDtoSet,
-                        editTextId.getText().toString(),
+                        editTextLoginId.getText().toString(),
                         editTextPNumber.getText().toString(),
                         editTextName.getText().toString());
                 Call<SignupResult> call = retrofitService.sendSignupRequest(requestData);
@@ -81,5 +78,12 @@ public class SignUpActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void initComponents() {
+        signUpBtn = (Button) findViewById(R.id.SignUp_Btn);
+        editTextLoginId = (EditText) findViewById(R.id.EditText_Id);
+        editTextName = (EditText) findViewById(R.id.EditText_Name);
+        editTextPNumber = (EditText) findViewById(R.id.EditText_PhoneNumber);
     }
 }

@@ -38,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        // initialize components
+        initComponents();
 
         Optional<String> token = Optional.ofNullable(
                 SharedPreferenceBase.getSharedPreference(APIPreferences.SHARED_PREFERENCE_NAME_COOKIE));
@@ -48,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
                     SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_PHONE_NUMBER)));
         }
 
-        findComponents();
+
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void findComponents() {
+    private void initComponents() {
         buttonLogin = (Button) findViewById(R.id.Login_Btn);
         buttonSignup = (Button) findViewById(R.id.Signup_Btn);
         editTextLoginId = (EditText) findViewById(R.id.edittext_login_id);
