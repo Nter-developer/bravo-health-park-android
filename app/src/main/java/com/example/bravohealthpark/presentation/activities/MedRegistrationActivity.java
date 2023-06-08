@@ -1,14 +1,15 @@
 package com.example.bravohealthpark.presentation.activities;
 
+import static com.example.bravohealthpark.infra.utils.IntentUtils.startNewActivity;
+import static com.example.bravohealthpark.infra.utils.ToastUtils.showToast;
+
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,10 +17,11 @@ import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoRequest;
 import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoResponse;
 import com.example.bravohealthpark.domain.medicine.services.MedicationInfoService;
-import com.example.bravohealthpark.global.error.ToastErrorMessage;
+import com.example.bravohealthpark.global.error.ErrorMessages;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
 import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
+import com.example.bravohealthpark.infra.utils.Messages;
 
 import java.util.Optional;
 
@@ -47,6 +49,7 @@ public class MedRegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_med_registration);
+        // initialize components
         initComponents();
 
         buttonMediRegister.setOnClickListener(new View.OnClickListener() {
@@ -63,17 +66,17 @@ public class MedRegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<SaveMediInfoResponse> call, Response<SaveMediInfoResponse> response) {
                         if(response.isSuccessful()) {
-                            toastCustomMessage(ToastErrorMessage.MEDI_REGISTER_SUCCESS);
-                            intentMainActivityAndClearTask();
+                            showToast(getApplicationContext(), Messages.MEDI_REGISTER_SUCCESS);
+                            startNewActivity(getApplicationContext(), MainActivity.class, true);
                         }
                         else {
-                            toastCustomMessage(ToastErrorMessage.MEDI_REGISTER_FAIL);
+                            showToast(getApplicationContext(), ErrorMessages.MEDI_REGISTER_FAIL);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<SaveMediInfoResponse> call, Throwable t) {
-                        toastCustomMessage(ToastErrorMessage.ERROR_MESSAGE_NETWORK_ERROR);
+                        showToast(getApplicationContext(), ErrorMessages.NETWORK_ERROR);
                     }
                 });
             }
@@ -120,16 +123,5 @@ public class MedRegistrationActivity extends AppCompatActivity {
         checkBoxDinner = (CheckBox) findViewById(R.id.checkbox_dose_dinner);
         checkBoxNight = (CheckBox) findViewById(R.id.checkbox_dose_night);
         buttonMediRegister = (Button) findViewById(R.id.button_medi_register);
-    }
-
-    private void intentMainActivityAndClearTask() {
-        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
-
-    private void toastCustomMessage(String customMessage) {
-        Toast.makeText(MedRegistrationActivity.this.getApplicationContext(),
-                customMessage, Toast.LENGTH_SHORT).show();
     }
 }

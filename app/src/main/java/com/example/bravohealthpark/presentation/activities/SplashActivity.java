@@ -1,6 +1,7 @@
 package com.example.bravohealthpark.presentation.activities;
 
-import android.content.Intent;
+import static com.example.bravohealthpark.infra.utils.IntentUtils.startNewActivity;
+
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -21,8 +22,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private class splashhandler implements Runnable{
         public void run(){
-            startActivity(new Intent(getApplication(), MainActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
-            SplashActivity.this.finish(); // 로딩페이지 Activity stack에서 제거
+            startNewActivity(getApplicationContext(), MainActivity.class, true);
         }
     }
 

@@ -22,8 +22,8 @@ import java.util.ArrayList;
 
 public class CalendarActivity extends AppCompatActivity{
 
-    TextView monthYearText; //년월 텍스트뷰
-
+    TextView textViewMonthYear; //년월 텍스트뷰
+    ImageButton buttonPre, buttonNext;
     RecyclerView recyclerView;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -31,12 +31,8 @@ public class CalendarActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
-        //초기화
-        monthYearText = findViewById(R.id.MonthYearText);
-        ImageButton preBtn = findViewById(R.id.Pre_Btn);
-        ImageButton nextBtn = findViewById(R.id.Next_Btn);
-        recyclerView = findViewById(R.id.recyclerView);
+        // initialize components
+        initComponents();
 
         //현재 날짜
         CalendarUtil.selectedDate = LocalDate.now();
@@ -45,7 +41,7 @@ public class CalendarActivity extends AppCompatActivity{
         setMonthView();
 
         //이전 달 버튼 이벤트
-        preBtn.setOnClickListener(new View.OnClickListener() {
+        buttonPre.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -56,7 +52,7 @@ public class CalendarActivity extends AppCompatActivity{
         });
 
         //다음 달 버튼 이벤트
-        nextBtn.setOnClickListener(new View.OnClickListener() {
+        buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -66,6 +62,13 @@ public class CalendarActivity extends AppCompatActivity{
             }
         });
     }//onCreate
+
+    private void initComponents() {
+        textViewMonthYear = findViewById(R.id.MonthYearText);
+        recyclerView = findViewById(R.id.recyclerView);
+        buttonPre = findViewById(R.id.Pre_Btn);
+        buttonNext = findViewById(R.id.Next_Btn);
+    }
 
     //날짜 타입 설정(2023 5월)
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -82,7 +85,7 @@ public class CalendarActivity extends AppCompatActivity{
     private void setMonthView(){
 
         //년월 텍스트뷰 셋팅
-        monthYearText.setText(monthYearFromDate(CalendarUtil.selectedDate));
+        textViewMonthYear.setText(monthYearFromDate(CalendarUtil.selectedDate));
 
         //해당 월 날짜 가져오기
         ArrayList<LocalDate> dayList = daysInMonthArray(CalendarUtil.selectedDate);
