@@ -1,4 +1,4 @@
-package com.example.bravohealthpark.infra.retrofit;
+package com.example.bravohealthpark.domain.user.service;
 
 import com.example.bravohealthpark.domain.authority.dto.LoginDto;
 import com.example.bravohealthpark.domain.authority.dto.LoginResponse;
@@ -11,7 +11,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface RetrofitService {
+public interface UserRetrofitService {
     @POST("/user/signup")
     Call<SignupResult> sendSignupRequest(@Body UserDto userDto);
 

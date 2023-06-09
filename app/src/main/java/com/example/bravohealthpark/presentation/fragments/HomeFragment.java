@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.user.dto.FindUserResponse;
+import com.example.bravohealthpark.domain.user.service.UserRetrofitService;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
 import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
-import com.example.bravohealthpark.infra.retrofit.RetrofitService;
 import com.example.bravohealthpark.presentation.activities.MedRegistrationActivity;
 
 import retrofit2.Call;
@@ -27,7 +27,7 @@ public class HomeFragment extends Fragment {
     private RelativeLayout GoCalender;
     private TextView textViewHelloUser;
     private static Call<FindUserResponse> call;
-    private static RetrofitService retrofitService;
+    private static UserRetrofitService userRetrofitService;
 
 
     @Override
@@ -43,8 +43,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<FindUserResponse> call, Response<FindUserResponse> response) {
                 if(response.isSuccessful()) {
-                    SharedPreferenceBase.setSharedPreference(UserPreferences.USER_PREFERENCE_USER_NAME, response.body().getUsername());
-                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.USER_PREFERENCE_USER_NAME));
+                    SharedPreferenceBase.setSharedPreference(UserPreferences.PREFERENCE_USER_NAME, response.body().getUsername());
+                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_NAME));
                 }
             }
 
@@ -67,7 +67,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initRetrofitServiceAndCall() {
-        retrofitService = RetrofitClient.getApiService(RetrofitService.class);
-        call = retrofitService.sendFindMyUserRequest();
+        userRetrofitService = RetrofitClient.getApiService(UserRetrofitService.class);
+        call = userRetrofitService.sendFindMyUserRequest();
     }
 }

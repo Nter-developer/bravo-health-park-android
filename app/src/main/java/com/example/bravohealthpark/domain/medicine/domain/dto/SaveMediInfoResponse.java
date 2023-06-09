@@ -1,6 +1,6 @@
 package com.example.bravohealthpark.domain.medicine.domain.dto;
 
-import com.example.bravohealthpark.domain.medicine.domain.model.State;
+import com.example.bravohealthpark.domain.user.State;
 
 public class SaveMediInfoResponse {
     private int days;

@@ -14,7 +14,7 @@ import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.authority.dto.AuthorityDto;
 import com.example.bravohealthpark.domain.user.dto.SignupResult;
 import com.example.bravohealthpark.domain.user.dto.UserDto;
-import com.example.bravohealthpark.infra.retrofit.RetrofitService;
+import com.example.bravohealthpark.domain.user.service.UserRetrofitService;
 
 import java.io.IOException;
 import java.util.HashSet;
@@ -28,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     private Button signUpBtn;
     private EditText editTextName, editTextPNumber, editTextLoginId;
-    private RetrofitService retrofitService;
+    private UserRetrofitService userRetrofitService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                retrofitService = getApiService(RetrofitService.class);
+                userRetrofitService = getApiService(UserRetrofitService.class);
 
                 HashSet<AuthorityDto> authorityDtoSet = new HashSet<>();
                 authorityDtoSet.add(new AuthorityDto("ROLE_USER"));
@@ -49,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
                         editTextLoginId.getText().toString(),
                         editTextPNumber.getText().toString(),
                         editTextName.getText().toString());
-                Call<SignupResult> call = retrofitService.sendSignupRequest(requestData);
+                Call<SignupResult> call = userRetrofitService.sendSignupRequest(requestData);
                 call.enqueue(new Callback<SignupResult>() {
                     @Override
                     public void onResponse(Call<SignupResult> call, Response<SignupResult> response) {

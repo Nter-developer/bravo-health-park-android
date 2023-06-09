@@ -15,12 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.authority.dto.LoginDto;
 import com.example.bravohealthpark.domain.authority.dto.LoginResponse;
+import com.example.bravohealthpark.domain.user.service.UserRetrofitService;
 import com.example.bravohealthpark.global.error.ErrorMessages;
 import com.example.bravohealthpark.infra.preferences.APIPreferences;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
 import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
-import com.example.bravohealthpark.infra.retrofit.RetrofitService;
 import com.example.bravohealthpark.infra.utils.Messages;
 
 import java.util.Optional;
@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private RetrofitService retrofitService;
+    private UserRetrofitService userRetrofitService;
     private Button buttonLogin, buttonSignup;
     private EditText editTextLoginId, editTextPNumber;
     private static Call<LoginResponse> callLogin;
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if(response.isSuccessful()) {
                     showToast(getApplicationContext(), Messages.LOGIN_SUCCESS);
-                    saveLogIdAndPNumber(response);
+                    saveLogIdAndPNumber();
                     startNewActivity(getApplicationContext(), MainActivity.class, true);
                 }
                 else {
@@ -122,11 +122,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initRetrofitServiceAndCreateCall(LoginDto loginDto) {
-        retrofitService = RetrofitClient.getApiService(RetrofitService.class);
-        callLogin = retrofitService.sendLoginRequest(loginDto);
+        userRetrofitService = RetrofitClient.getApiService(UserRetrofitService.class);
+        callLogin = userRetrofitService.sendLoginRequest(loginDto);
     }
 
-    private void saveLogIdAndPNumber(Response<LoginResponse> response) {
+    private void saveLogIdAndPNumber() {
         SharedPreferenceBase.setSharedPreference(
                 UserPreferences.PREFERENCE_USER_LOGIN_ID, editTextLoginId.getText().toString());
         SharedPreferenceBase.setSharedPreference(
