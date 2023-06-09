@@ -1,4 +1,4 @@
-package com.example.bravohealthpark.domain.medication.domain;
+package com.example.bravohealthpark.domain.medication;
 
 public class Time {
     private int hour, minute;
