@@ -1,7 +1,7 @@
-package com.example.bravohealthpark.domain.medicine.services;
+package com.example.bravohealthpark.domain.medication.services;
 
-import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoRequest;
-import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoResponse;
+import com.example.bravohealthpark.domain.medication.domain.dto.SaveMediInfoRequest;
+import com.example.bravohealthpark.domain.medication.domain.dto.SaveMediInfoResponse;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

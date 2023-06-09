@@ -1,4 +1,4 @@
-package com.example.bravohealthpark.domain.medicine.domain.dto;
+package com.example.bravohealthpark.domain.medication.domain.dto;
 
 public class SaveMediInfoRequest {
     private int days;

@@ -14,9 +14,9 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bravohealthpark.R;
-import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoRequest;
-import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoResponse;
-import com.example.bravohealthpark.domain.medicine.services.MedicationInfoService;
+import com.example.bravohealthpark.domain.medication.domain.dto.SaveMediInfoRequest;
+import com.example.bravohealthpark.domain.medication.domain.dto.SaveMediInfoResponse;
+import com.example.bravohealthpark.domain.medication.services.MedicationInfoService;
 import com.example.bravohealthpark.global.error.ErrorMessages;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
