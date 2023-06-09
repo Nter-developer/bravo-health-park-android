@@ -12,10 +12,10 @@ import androidx.fragment.app.Fragment;
 
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.user.dto.FindUserResponse;
+import com.example.bravohealthpark.domain.user.service.UserRetrofitService;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
 import com.example.bravohealthpark.infra.retrofit.RetrofitClient;
-import com.example.bravohealthpark.domain.user.UserRetrofitService;
 import com.example.bravohealthpark.presentation.activities.MedRegistrationActivity;
 
 import retrofit2.Call;
@@ -43,8 +43,8 @@ public class HomeFragment extends Fragment {
             @Override
             public void onResponse(Call<FindUserResponse> call, Response<FindUserResponse> response) {
                 if(response.isSuccessful()) {
-                    SharedPreferenceBase.setSharedPreference(UserPreferences.USER_PREFERENCE_USER_NAME, response.body().getUsername());
-                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.USER_PREFERENCE_USER_NAME));
+                    SharedPreferenceBase.setSharedPreference(UserPreferences.PREFERENCE_USER_NAME, response.body().getUsername());
+                    textViewHelloUser.setText(SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_NAME));
                 }
             }
 

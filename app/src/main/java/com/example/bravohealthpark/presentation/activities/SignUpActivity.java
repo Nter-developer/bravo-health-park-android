@@ -14,7 +14,7 @@ import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.domain.authority.dto.AuthorityDto;
 import com.example.bravohealthpark.domain.user.dto.SignupResult;
 import com.example.bravohealthpark.domain.user.dto.UserDto;
-import com.example.bravohealthpark.domain.user.UserRetrofitService;
+import com.example.bravohealthpark.domain.user.service.UserRetrofitService;
 
 import java.io.IOException;
 import java.util.HashSet;

@@ -1,36 +1,14 @@
 package com.example.bravohealthpark.domain.user;
 
-import java.math.BigInteger;
-
 public class UserEntity {
-    private long userId;
-    private boolean activated;
     private String loginId;
     private String phoneNumber;
     private String userName;
 
-    public UserEntity(long userId, boolean activated, String loginId, String phoneNumber, String userName) {
-        this.userId = userId;
-        this.activated = activated;
+    public UserEntity(String loginId, String phoneNumber, String userName) {
         this.loginId = loginId;
         this.phoneNumber = phoneNumber;
         this.userName = userName;
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
-    public boolean isActivated() {
-        return activated;
-    }
-
-    public void setActivated(boolean activated) {
-        this.activated = activated;
     }
 
     public String getLoginId() {
@@ -55,5 +33,14 @@ public class UserEntity {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "loginId='" + loginId + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", userName='" + userName + '\'' +
+                '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.example.bravohealthpark.domain.user;
+package com.example.bravohealthpark.domain.user.service;
 
 import com.example.bravohealthpark.domain.authority.dto.LoginDto;
 import com.example.bravohealthpark.domain.authority.dto.LoginResponse;
