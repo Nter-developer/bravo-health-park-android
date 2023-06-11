@@ -1,20 +1,20 @@
 package com.example.bravohealthpark.domain.medication.dto;
 
 public class SendImageRequest {
-    private String meme;
+    private String memo;
 
-    public SendImageRequest(String meme) {
-        this.meme = meme;
+    public SendImageRequest(String memo) {
+        this.memo = memo;
     }
 
-    public String getMeme() {
-        return meme;
+    public String getMemo() {
+        return memo;
     }
 
     @Override
     public String toString() {
         return "SendImageRequest{" +
-                "meme='" + meme + '\'' +
+                "meme='" + memo + '\'' +
                 '}';
     }
 }

@@ -1,12 +1,12 @@
 package com.example.bravohealthpark.domain.medication.dto;
 
-import com.example.bravohealthpark.domain.user.State;
+import com.example.bravohealthpark.domain.medication.State;
 
 public class SendImageResponse {
     private int days;
     private String endDate;
     private String itemName;
-    private int medicationInfoId;
+    private long medicationInfoId;
     private String memo;
     private String startDate;
     private State state;
