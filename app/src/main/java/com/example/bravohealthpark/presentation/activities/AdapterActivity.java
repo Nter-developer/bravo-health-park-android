@@ -7,7 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.bravohealthpark.R;
-import com.example.bravohealthpark.domain.medicine.domain.Time;
+import com.example.bravohealthpark.domain.medication.Time;
 
 import java.util.ArrayList;
 

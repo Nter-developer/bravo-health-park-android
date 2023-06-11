@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bravohealthpark.R;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
+import com.example.bravohealthpark.presentation.fragments.CameraFragment;
 import com.example.bravohealthpark.presentation.fragments.HomeFragment;
 import com.example.bravohealthpark.presentation.fragments.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.MainFrame,new SettingFragment()).commit();
                         return true;
                     case R.id.Camera_Fragment:
-                        openCamera();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.MainFrame,new CameraFragment()).commit();
                         return true;
 
                 }

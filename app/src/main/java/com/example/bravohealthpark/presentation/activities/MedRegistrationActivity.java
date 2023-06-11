@@ -14,9 +14,9 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bravohealthpark.R;
-import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoRequest;
-import com.example.bravohealthpark.domain.medicine.domain.dto.SaveMediInfoResponse;
-import com.example.bravohealthpark.domain.medicine.services.MedicationInfoService;
+import com.example.bravohealthpark.domain.medication.dto.SaveMediInfoRequest;
+import com.example.bravohealthpark.domain.medication.dto.SaveMediInfoResponse;
+import com.example.bravohealthpark.domain.medication.services.MediInfoRetrofitService;
 import com.example.bravohealthpark.global.error.ErrorMessages;
 import com.example.bravohealthpark.infra.preferences.SharedPreferenceBase;
 import com.example.bravohealthpark.infra.preferences.UserPreferences;
@@ -31,7 +31,7 @@ import retrofit2.Response;
 
 public class MedRegistrationActivity extends AppCompatActivity {
 
-    private static MedicationInfoService medicationInfoService;
+    private static MediInfoRetrofitService mediInfoRetrofitService;
     Call<SaveMediInfoResponse> call;
     private static SaveMediInfoRequest saveMediInfoRequest;
     private EditText editTextMediName, editTextDoseDays;
@@ -58,9 +58,9 @@ public class MedRegistrationActivity extends AppCompatActivity {
                 validateMediInfoRegisterForm();
 
                 createSaveMediInfoRequestDto();
-                medicationInfoService = RetrofitClient.getApiService(MedicationInfoService.class);
+                mediInfoRetrofitService = RetrofitClient.getApiService(MediInfoRetrofitService.class);
                 String loginId = SharedPreferenceBase.getSharedPreference(UserPreferences.PREFERENCE_USER_LOGIN_ID);
-                call = medicationInfoService.saveMedicationInfo(loginId, saveMediInfoRequest);
+                call = mediInfoRetrofitService.saveMedicationInfo(loginId, saveMediInfoRequest);
 
                 call.enqueue(new Callback<SaveMediInfoResponse>() {
                     @Override
