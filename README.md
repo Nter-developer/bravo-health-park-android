@@ -12,7 +12,7 @@
 
 #### 노인들을 위한 복약 관리 어플리케이션 지금이약
 
-![슬라이드1](https://github.com/Nter-developer/bravo-health-park-android/assets/59863112/cb5cc7cb-725b-4b34-9409-b241baaea91f)
+![슬라이드1](https://github.com/Nter-developer/bravo-health-park-android/assets/59863112/ced125c0-094a-4029-acb5-cc622390913c)
 
 </br>
 
