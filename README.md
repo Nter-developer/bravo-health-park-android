@@ -1,5 +1,6 @@
 # 지금이약 `Android`
-> 경기대학교 컴퓨터공학부 캡스톤 디자인 (2023.03.3 ~ 2023.06.10)
+> 경기대학교 컴퓨터공학부 캡스톤 디자인 (2023.03.3 ~ 2023.06.10)  
+> 고도화 프로젝트 진행 중 [advanced-now-medicine-android](https://github.com/dev-ant/advanced-now-medicine-android)
 
 </br>
 
